@@ -1,0 +1,16 @@
+Meeting 4/1
+
+May:
+1) Since the last meeting May has sent an email to the clients to conduct further elicitation.
+2) May's main issue with achieving her goal of completing test cases is finding time to meet with Ryan, her pair programming partner.
+3) May's goal for the next meeting is the completion of test cases (not code, but input/output blackbox).
+
+Kevin:
+1) Kevin has added initial PHP files to the project since the last meeting.
+2) Kevin has realized that adjusting the code from the previous project is harder than anticipated and he considers this to be one of his major obstacles.
+3) His goal is to have a rudimentary word cloud generator completed by the next meeting.
+
+Alex:
+1) Alex has been working on the the virtual machine, with desired editors and configuration for easy development since the last meeting.
+2) In order to make the automated testing work better and look better, Alex has to learn a lot more about PHPUnit and shell scripting.
+3) By the next meeting Alex is expected to have set up everything but the testing structure and gotten search working for either IEEE or ACM.

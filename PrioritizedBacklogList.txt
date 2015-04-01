@@ -1,0 +1,13 @@
+Prioritized Backlog List
+1) Make sure that our application can take in the proper search words and get correct results
+2) Display word cloud
+3) Be able to click words in word cloud
+4) Display table for word clicked 
+5) Be able to click words in the word frequency table and search that word 
+6) Conference table from clicking a certain conference
+7) Be able to select how many papers to search 
+8) Work on the progress bar
+9) Be able to download word cloud
+10) Option to export table to pdf/plain text
+11) Initialized back button for word table
+12) Initialized back button for conference
