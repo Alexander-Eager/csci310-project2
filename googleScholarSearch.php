@@ -28,7 +28,8 @@ function retrieveArticles($searchTearms, $numberOfResults) {
 	$articlesWeWillUse = array();
 	$numArticlesTaken = 0;
 	while ($numArticlesTaken < $numberOfResults) {
-		// potentially change to article id later
+		// potentially change to article id later, instead of just straight
+		// 
 		if ($i < $authorLen && !in_array($authorArticles[$i], $articlesWeWillUse)) {
 			$articlesWeWillUse[] = $authorArticles[$i];
 			$numArticlesTaken ++;
@@ -45,7 +46,6 @@ function retrieveArticles($searchTearms, $numberOfResults) {
 	}
 
 	return $articlesWeWillUse;
-	
 }
 
 ?>
