@@ -7,7 +7,7 @@
 
 // this represents a distribution of words in lyrics
 class WordCloudArray {
-
+ 
 	public $map = array();
 
 	// makes the map from word -> number of occurences
