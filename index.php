@@ -15,9 +15,7 @@ rel="stylesheet" type="text/css" />
 <img src="searchlogo.jpg" />
 </div>
 
-
-
-	<div id="search-box">
+<div id="search-box">
 Results:
 <select id="resultN" >
   <option value="1">1</option>
@@ -42,15 +40,21 @@ Results:
   <option value="20">20</option>
 </select>
 
+        <div id="search-box" style="display:inline">
+            Search: <input type="text" id="search-term">
+            <button id="search-btn" onClick="doSearch($('#search-term').val().toLowerCase(), $('#resultN').val())">Search</button>
+        </div>
+
 <script language="javascript">
-function send()
-{document.theform.submit()}
+  function doSearch(searchTerm, numResults) {
+    location.href = 'http://localhost/csci310-project2/search.php?searchTerms=' + searchTerm + '&numResults=' + numResults;
+  }
 </script>
 
-<form action="/search" method="get" class="sfm" name="theform" style="display:inline;">
-    <input type="text" name="q" value="" id="sf"/>
-</form>
-	</div>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</div>
 
 </div>
 
