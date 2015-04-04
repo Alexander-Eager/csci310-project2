@@ -11,8 +11,8 @@
 //	for now, the feature we are implementing is just retrieving relevant documents.
 function retrieveArticles($searchTearms, $numberOfResults) {
 	// search by title and author separately
-	$authorHandle = popen('scholar.py -c $numberOfResults --author "$searchTerms"', "");
-	$titleHandle = popen('scholar.py -c $numberOfResults --phrase "$searchTerms"', "");
+	$authorHandle = popen('python scholar.py -c $numberOfResults --author "$searchTerms"', "");
+	$titleHandle = popen('python scholar.py -c $numberOfResults --phrase "$searchTerms"', "");
 
 	// the output, as formatted by scholar.py https://github.com/ckreibich/scholar.py
 	$authorOutput = file_get_contents($authorHandle);
