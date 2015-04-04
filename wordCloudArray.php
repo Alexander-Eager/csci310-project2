@@ -5,7 +5,7 @@
 
 <?php
 
-// this represents a distribution of words in papers
+// this represents a distribution of words in lyrics
 class WordCloudArray {
 
 	public $map = array();
@@ -67,8 +67,8 @@ class WordCloudArray {
 	}
 
 	// make the word cloud array from the given set of lyrics
-	public function __construct($lyrics) {
-		$this->map = $this->returnWords($lyrics);
+	public function __construct($text) {
+		$this->map = $this->returnWords($text);
 	}
 
 	// get the map
@@ -76,45 +76,10 @@ class WordCloudArray {
 		return $this->map;
 	}
 
-	// yields the combination of two word cloud arrays
-	public function combination($array2) {
-		$ans = new WordCloudArray("");
-		$array1 = $this;
-
-		// add everything from array1
-		foreach ($array1->map as $word => $numTimes) {
-			// if the word is in both, then add the numtimes together
-			if (array_key_exists($word, $array2->map)) {
-				$ans->map[$word] = $array1->map[$word] + $array2->map[$word];
-			}
-			// otherwise just add it to the combined array
-			else{ 
-				$ans->map[$word] = $numTimes;
-			}
-		}
-
-		// add everything not in array1, but in array2
-		foreach ($array2->map as $word => $numTimes) {
-			// if the word is in both, it is already in the combined one
-			// otherwise, add it to the combined one
-			if (!array_key_exists($word, $array1->map)) {
-				$ans->map[$word] = $numTimes;
-			}
-		}
-		
-
-		return $ans;
-	}
+	
 
 	public function generatewordcloud(){
-
-				include("UrlGenerator.php");
-				$authors = getAuthorsFromURL();
-				$result = new WordCloudArray("");
-				foreach ($authors as $artist) {
-					$result = $result->combination( $authors->getWordCloudArray() );
-				}
-
+				$result = getMap();
 				$max = 0;
 				$map = $result->getMap();
 				$cuttedResult = array();
@@ -152,8 +117,7 @@ class WordCloudArray {
 					$b = 80 + (1 - $percent) * 50;
 					$modifiedSize = 15 + $percent * 55;
 					$fontSize = "$modifiedSize" . "px";
-					$output .= "<a href=\"/songlistpage.php?artists=" . $_GET["artists"] . "&word=" . $word .
-							"\"><span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span></a>";
+					$output .= "<span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span>";
 					$output .= "  "; 
 				}
 				return $output;
