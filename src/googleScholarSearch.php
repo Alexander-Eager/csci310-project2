@@ -24,7 +24,8 @@ function retrieveArticles($searchTearms, $numberOfResults) {
 
 	// going through, getting out the articles we will use
 	$i = 0;
-	$authorLen = count($authorArticles), $titleLen = count($titleArticles);
+	$authorLen = count($authorArticles);
+	$titleLen = count($titleArticles);
 	$articlesWeWillUse = array();
 	$numArticlesTaken = 0;
 	while ($numArticlesTaken < $numberOfResults) {
