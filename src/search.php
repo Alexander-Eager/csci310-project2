@@ -22,7 +22,7 @@ $numArticles = count($articles);
 for ($i = 1; $i <= $numArticles; $i ++) {
 	echo "Article $i" . "<br/>";
 	echo "----------" . "<br/>";
-	echo htmlspecialchars($articles[$i - 1]);
+	echo "<pre><code>" . htmlspecialchars($articles[$i - 1]) . "</code></pre>";
 	echo "<br/><br/>";
 }
 
