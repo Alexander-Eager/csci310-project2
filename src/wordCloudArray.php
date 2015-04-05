@@ -77,7 +77,7 @@ class WordCloudArray {
 	}
 
 	
-
+	//generate word cloud. input from url
 	public function generatewordcloud($map){
 				$cuttedResult = array();
 				//check if words are more than 250
