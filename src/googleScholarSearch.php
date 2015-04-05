@@ -21,6 +21,15 @@ class GoogleScholar {
 		$authorArticles = explode("\n\n", $authorOutput);
 		$titleArticles = explode("\n\n", $titleOutput);
 
+		// check to make sure there are no empty articles
+		if (count($authorArticles) == 1 && $authorArticles[0] == "") {
+			$authorArticles = array();
+		}
+		if (count($titleArticles) == 1 && $titleArticles[0] == "") {
+			$titleArticles = array();
+		}
+
+
 		// going through, getting out the articles we will use
 		$i = 0;
 		$authorLen = count($authorArticles);
@@ -35,7 +44,7 @@ class GoogleScholar {
 				$numArticlesTaken ++;
 			}
 			if ($numArticlesTaken < $numberOfResults &&
-				$i < $titleLen && !in_array($titleArticles[$i], $articlesWeWillUse)) {
+					$i < $titleLen && !in_array($titleArticles[$i], $articlesWeWillUse)) {
 				$articlesWeWillUse[] = $titleArticles[$i];
 				$numArticlesTaken ++;
 			}
