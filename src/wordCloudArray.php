@@ -76,6 +76,24 @@ class WordCloudArray {
 		return $this->map;
 	}
 
+	//get word size
+	public function wordSize($numTimes,$max){
+		$size = $numTimes;
+		$percent = $size / $max ;
+		$modifiedSize = 15 + $percent * 55;
+		$fontSize = "$modifiedSize" . "px";
+		return $fontSize;
+	}
+
+	//get word color
+	public function wordColor($numTimes,$max){
+		$size = $numTimes;
+		$percent = $size / $max ;
+		$r = 200 + (1 - $percent) * 50;
+		$g = 120 + (1 - $percent) * 50;
+		$b = 80 + (1 - $percent) * 50;
+		return "rgb($r,$g,$b)";
+	}
 	
 	//generate word cloud. input from url
 	public function generatewordcloud($map){
@@ -106,14 +124,7 @@ class WordCloudArray {
 						$max = $numTimes;
 				}
 				foreach ($cuttedResult as $word => $numTimes) {
-					$size = $numTimes;
-					$percent = $size / $max ;
-					$r = 200 + (1 - $percent) * 50;
-					$g = 120 + (1 - $percent) * 50;
-					$b = 80 + (1 - $percent) * 50;
-					$modifiedSize = 15 + $percent * 55;
-					$fontSize = "$modifiedSize" . "px";
-					echo "<span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span>";
+					echo "<span style = \"color: $color; font-size: $size\">$word</span>";
 					echo "  "; 
 				}
 		}

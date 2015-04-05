@@ -74,8 +74,10 @@
 		<div id = "submit">
 				<br>
 				<br>
-				<button type = "button" id = "backButton">Back</button>
-				<button type = "button" id = "downloadButton">Download</button>
+				<form action:"/index.php">
+					<button type = "button" id = "backButton">Back</button>
+				<form>
+					<button type = "button" id = "downloadButton">Download</button>
 		</div>
 </body>
 </html>
