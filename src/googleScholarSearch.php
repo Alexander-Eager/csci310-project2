@@ -17,6 +17,7 @@ class GoogleScholar {
 		$titleOutput = `python scholar.py -c $numberOfResults --phrase="$searchTerms" --title-only`;
 
 		// separating individual articles
+		// may in the future use CSV form to do this
 		$authorArticles = explode("\n\n", $authorOutput);
 		$titleArticles = explode("\n\n", $titleOutput);
 
