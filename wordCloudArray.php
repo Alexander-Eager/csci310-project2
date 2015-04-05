@@ -78,10 +78,7 @@ class WordCloudArray {
 
 	
 
-	public function generatewordcloud(){
-				$result = getMap();
-				$max = 0;
-				$map = $result->getMap();
+	public function generatewordcloud($map){
 				$cuttedResult = array();
 				//check if words are more than 250
 				if(count($map) > 250){
@@ -93,22 +90,21 @@ class WordCloudArray {
 						}
 						$i ++;
 					}
-
 					$keys = array_keys($cuttedResult); 
 					shuffle($keys); 
 					$random = array(); 
 					foreach ($keys as $key) { 
 						$random[$key] = $cuttedResult[$key]; 
 					}
-					$cuttedResult = $random; 
-					
+					$cuttedResult = $random; 					
 				}
-			
+				else{
+					$cuttedResult = $map;
+				}
 				foreach ($cuttedResult as $word => $numTimes){
 					if($numTimes > $max)
 						$max = $numTimes;
 				}
-				$output = "";
 				foreach ($cuttedResult as $word => $numTimes) {
 					$size = $numTimes;
 					$percent = $size / $max ;
@@ -117,10 +113,9 @@ class WordCloudArray {
 					$b = 80 + (1 - $percent) * 50;
 					$modifiedSize = 15 + $percent * 55;
 					$fontSize = "$modifiedSize" . "px";
-					$output .= "<span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span>";
-					$output .= "  "; 
+					echo "<span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span>";
+					echo "  "; 
 				}
-				return $output;
 		}
 }
 
