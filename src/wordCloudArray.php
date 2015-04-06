@@ -124,6 +124,8 @@ class WordCloudArray {
 						$max = $numTimes;
 				}
 				foreach ($cuttedResult as $word => $numTimes) {
+					$color = $this->wordColor($numTimes,$max);
+					$size = $this->wordSize($numTimes,$max);
 					echo "<span style = \"color: $color; font-size: $size\">$word</span>";
 					echo "  "; 
 				}
