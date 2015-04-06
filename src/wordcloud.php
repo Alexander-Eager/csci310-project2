@@ -6,15 +6,20 @@
 
 	<style>
 		body {
-			background-color: gray;
-			padding: 30px;
+			float: center;
+			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			font-weight: bold;
 		}
 
 		#websitetitle {
-			color: black;
-			font-family: Lucida Handwriting;
-			font-size: 50px;	
+			margin-left: 50px;
 		}
+		
+		#logo {
+			width: 140px;
+			height: 140px;
+		}
+
 		#cloudBox{
   			position: absolute; 
 			top: 13em;
@@ -33,7 +38,6 @@
 			left: 8em;
 			width:100px;
 			height:40px;
-			background: purple;
 		}
 		#downloadButton{
 			clear:left;
@@ -41,13 +45,12 @@
 			left: 30em;
 			width:100px;
 			height:40px;
-			background: purple;
 		}
 		#wordCloud{
 			height: 300px;
 			width: 66%;
   			position: absolute; 
-			top: 20%;
+			top: 40%;
 			left:19%;
 			size: <?php echo "$size"; ?>;
 			overflow-y: scroll;
@@ -56,7 +59,8 @@
 		</style>
 </head>
 <body>
-<center id = "websitetitle">Scholar Search</center>
+<div id = "websitetitle"><img src="searchlogo.jpg" id="logo" /></div>
+
 			<?php
 				include("wordCloudArray.php");
 			?>
