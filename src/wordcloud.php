@@ -65,7 +65,7 @@
 					<?php
 					$text = $_GET["text"];
 					$content = new WordCloudArray($text);
-					$content->generatewordcloud($content->getMap());
+					echo $content->generatewordcloud($content->getMap());
 					?>
 				</p>
 		

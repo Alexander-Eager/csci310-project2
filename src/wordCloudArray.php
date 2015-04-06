@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-
 <?php
 
 // this represents a distribution of words in lyrics
@@ -119,20 +114,23 @@ class WordCloudArray {
 				else{
 					$cuttedResult = $map;
 				}
+				$max = 0;
 				foreach ($cuttedResult as $word => $numTimes){
 					if($numTimes > $max)
 						$max = $numTimes;
 				}
+				$output = "";//for testing only
 				foreach ($cuttedResult as $word => $numTimes) {
+
 					$color = $this->wordColor($numTimes,$max);
 					$size = $this->wordSize($numTimes,$max);
-					echo "<span style = \"color: $color; font-size: $size\">$word</span>";
-					echo "  "; 
+					$output.="<span style = \"color: $color; font-size: $size\">$word</span>  ";
+					//echo "<span style = \"color: $color; font-size: $size\">$word</span>";
+					//echo "  "; 
 				}
+				return $output;//for testing only
+
 		}
 }
 
 ?>
-
-</body>
-</html>
