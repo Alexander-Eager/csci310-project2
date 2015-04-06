@@ -6,6 +6,7 @@
 
 	<style>
 		body {
+<<<<<<< HEAD
 			background-color: gray;
 			padding: 30px;
 		}
@@ -15,6 +16,22 @@
 			font-family: Lucida Handwriting;
 			font-size: 50px;	
 		}
+=======
+			float: center;
+			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			font-weight: bold;
+		}
+
+		#websitetitle {
+			margin-left: 50px;
+		}
+		
+		#logo {
+			width: 140px;
+			height: 140px;
+		}
+
+>>>>>>> fcdfde5466696c47fcc7219a4147142e876937dc
 		#cloudBox{
   			position: absolute; 
 			top: 13em;
@@ -33,7 +50,10 @@
 			left: 8em;
 			width:100px;
 			height:40px;
+<<<<<<< HEAD
 			background: purple;
+=======
+>>>>>>> fcdfde5466696c47fcc7219a4147142e876937dc
 		}
 		#downloadButton{
 			clear:left;
@@ -41,13 +61,20 @@
 			left: 30em;
 			width:100px;
 			height:40px;
+<<<<<<< HEAD
 			background: purple;
+=======
+>>>>>>> fcdfde5466696c47fcc7219a4147142e876937dc
 		}
 		#wordCloud{
 			height: 300px;
 			width: 66%;
   			position: absolute; 
+<<<<<<< HEAD
 			top: 20%;
+=======
+			top: 40%;
+>>>>>>> fcdfde5466696c47fcc7219a4147142e876937dc
 			left:19%;
 			size: <?php echo "$size"; ?>;
 			overflow-y: scroll;
@@ -56,7 +83,12 @@
 		</style>
 </head>
 <body>
+<<<<<<< HEAD
 <center id = "websitetitle">Scholar Search</center>
+=======
+<div id = "websitetitle"><img src="searchlogo.jpg" id="logo" /></div>
+
+>>>>>>> fcdfde5466696c47fcc7219a4147142e876937dc
 			<?php
 				include("wordCloudArray.php");
 			?>
