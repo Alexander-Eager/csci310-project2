@@ -1,0 +1,32 @@
+Meeting 4/4
+
+Eric
+1) Since the last meeting, Eric has completed 2 additional sections of the first iteration report
+2) Eric has had some issues deciphering exactly what certain sections of the iteration report entails
+3) Eric will have finished the iteration report document by the next meeting
+
+
+Kevin
+1) Since the last meeting Kevin has been reviewing the potential for code reuse from the previous project
+2) Kevin will be working on simple design for the product backlog for the Extreme Programming methodology we will be following
+3) Kevin will finish this by the end of today
+
+Ryan
+1) Since the last meeting Ryan has finished all the black box test cases for the php search function
+2) Ryan had some issues on deciding what would be the sufficient tests that would cover all the cases, but not be extraneous 
+3) Ryan will be working on actually writing the code for the test cases
+
+Alex
+1) Finished setting up the VM for submission and use by the team, including a README with instructions.  Wrapped the search code so that it can be texted.
+2) Not really any hurdles for me now; just have to work with May to get the search working on the web page.
+3) Upload the VM and get everyone set up. Test the search, and integrate it with the UI.
+
+Eric T
+1) Since last meeting, Eric Tang has finished word cloud code.
+2) Eric has some issue with the color of the words.
+3) Eric will make word cloud UI and get the whole section done.
+
+May
+1) Since the last meeting, May has completed the framework for the project’s search page. She also created the project logo and also documented the past meetings.
+2) May has some issues with the full details of how the page should look, she is not entirely sure if there should be more requirements on how the pages should look.
+3) May will be helping Alex with integrating the UI and the search for the site.
