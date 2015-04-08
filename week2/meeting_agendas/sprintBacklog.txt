@@ -1,3 +1,0 @@
-Sprint Backlog
-1) Implement search feature, return academic articles
-2) Display word cloud
