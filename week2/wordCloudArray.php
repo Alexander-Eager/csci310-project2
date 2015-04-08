@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
 <?php
 
 // this represents a distribution of words in lyrics
@@ -71,27 +76,12 @@ class WordCloudArray {
 		return $this->map;
 	}
 
-	//get word size
-	public function wordSize($numTimes,$max){
-		$size = $numTimes;
-		$percent = $size / $max ;
-		$modifiedSize = 15 + $percent * 55;
-		$fontSize = "$modifiedSize" . "px";
-		return $fontSize;
-	}
-
-	//get word color
-	public function wordColor($numTimes,$max){
-		$size = $numTimes;
-		$percent = $size / $max ;
-		$r = 200 + (1 - $percent) * 50;
-		$g = 120 + (1 - $percent) * 50;
-		$b = 80 + (1 - $percent) * 50;
-		return "rgb($r,$g,$b)";
-	}
 	
-	//generate word cloud. input from url
-	public function generatewordcloud($map){
+
+	public function generatewordcloud(){
+				$result = getMap();
+				$max = 0;
+				$map = $result->getMap();
 				$cuttedResult = array();
 				//check if words are more than 250
 				if(count($map) > 250){
@@ -103,40 +93,38 @@ class WordCloudArray {
 						}
 						$i ++;
 					}
+
 					$keys = array_keys($cuttedResult); 
 					shuffle($keys); 
 					$random = array(); 
 					foreach ($keys as $key) { 
 						$random[$key] = $cuttedResult[$key]; 
 					}
-					$cuttedResult = $random; 					
+					$cuttedResult = $random; 
+					
 				}
-				else{
-					$cuttedResult = $map;
-				}
-				$max = 0;
+			
 				foreach ($cuttedResult as $word => $numTimes){
 					if($numTimes > $max)
 						$max = $numTimes;
 				}
-				$output = "";//for testing only
+				$output = "";
 				foreach ($cuttedResult as $word => $numTimes) {
-
-					$color = $this->wordColor($numTimes,$max);
-					$size = $this->wordSize($numTimes,$max);
-<<<<<<< HEAD
-					$output.="<span style = \"color: $color; font-size: $size\">$word</span>";
-					echo "<span style = \"color: $color; font-size: $size\">$word</span>";
-					echo "  "; 
-=======
-					$output.="<span style = \"color: $color; font-size: $size\">$word</span>  ";
-					//echo "<span style = \"color: $color; font-size: $size\">$word</span>";
-					//echo "  "; 
->>>>>>> 24631d0cf6d894206cd4fd4f15a0ad149a080416
+					$size = $numTimes;
+					$percent = $size / $max ;
+					$r = 200 + (1 - $percent) * 50;
+					$g = 120 + (1 - $percent) * 50;
+					$b = 80 + (1 - $percent) * 50;
+					$modifiedSize = 15 + $percent * 55;
+					$fontSize = "$modifiedSize" . "px";
+					$output .= "<span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span>";
+					$output .= "  "; 
 				}
-				return $output;//for testing only
-
+				return $output;
 		}
 }
 
 ?>
+
+</body>
+</html>

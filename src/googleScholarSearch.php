@@ -13,8 +13,8 @@ class GoogleScholar {
 	//	for now, the feature we are implementing is just retrieving relevant documents.
 	public static function retrieveArticles($searchTerms, $numberOfResults) {
 		// the output, as formatted by scholar.py https://github.com/ckreibich/scholar.py
-		$authorOutput = `python scholar.py -c $numberOfResults --author="$searchTerms"`;
-		$titleOutput = `python scholar.py -c $numberOfResults --phrase="$searchTerms" --title-only`;
+		$authorOutput = `python '/home/web/Desktop/CSCI 310 Project 2/src/scholar.py' -c $numberOfResults --author="$searchTerms"`;
+		$titleOutput = `python '/home/web/Desktop/CSCI 310 Project 2/src/scholar.py' -c $numberOfResults --phrase="$searchTerms" --title-only`;
 
 		// separating individual articles
 		// may in the future use CSV form to do this
