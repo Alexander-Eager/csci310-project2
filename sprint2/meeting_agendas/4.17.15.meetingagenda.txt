@@ -1,0 +1,31 @@
+Meeting 4/17
+
+May:
+1) Since the last meeting, May has been working on making the words clickable
+2) Though the words are clickable, sometimes the words are not completely responsive
+3) May hopes to make all of the words responsive before the next meeting
+
+Kevin:
+1) Since the last meeting, Kevin has been working on displaying a table from a word clicked in the word cloud
+2) Working with Eric Wang and Eric Tang, Kevin has had some troubles formatting the table
+3) Kevin hopes to finish the table before next meeting
+
+Eric Wang
+1) Since the last meeting, Eric has been working on displaying a table from a word clicked in the word cloud
+2) Working with Kevin Kim and Eric Tang, Eric has had some troubles populating the table
+3) Eric hopes to finish the table before next meeting
+
+Eric Tang
+1) Since the last meeting, Eric has been working on displaying a table from a word clicked in the word cloud
+2) Working with Eric Wang and Kevin Kim, Eric has had some troubles displaying the table
+3) Eric hopes to finish the table before next meeting
+
+Ryan
+1) Since the last meeting, Ryan has been working on making the conference table
+2) Working with Alex, Ryan has had some troubles populating the table with information from the database
+3) Ryan hopes to complete the table before the next meeting
+
+Alex
+1) Since the last meeting, Alex has been working on making the conference table
+2) Working with Ryan, Alex has had some troubles formatting the table correctly
+3) Alex hopes to complete the table before the next meeting
