@@ -124,15 +124,11 @@ class WordCloudArray {
 
 					$color = $this->wordColor($numTimes,$max);
 					$size = $this->wordSize($numTimes,$max);
-<<<<<<< HEAD
-					$output.="<span style = \"color: $color; font-size: $size\">$word</span>";
-					echo "<span style = \"color: $color; font-size: $size\">$word</span>";
-					echo "  "; 
-=======
+
 					$output.="<span style = \"color: $color; font-size: $size\">$word</span>  ";
 					//echo "<span style = \"color: $color; font-size: $size\">$word</span>";
 					//echo "  "; 
->>>>>>> 24631d0cf6d894206cd4fd4f15a0ad149a080416
+
 				}
 				return $output;//for testing only
 
