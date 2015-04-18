@@ -128,6 +128,10 @@ class WordCloudArray {
 					$output.="<span style = \"color: $color; font-size: $size\">$word</span>  ";
 					//echo "<span style = \"color: $color; font-size: $size\">$word</span>";
 					//echo "  "; 
+					//Something something here to make clickable links for each word
+					echo "<a href=\"/songlistpage.php?artists=" . $_GET["artists"] . "&word=" . $word .
+							"\"><span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span></a>";
+					echo "  "; 
 
 				}
 				return $output;//for testing only
