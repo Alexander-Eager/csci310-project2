@@ -30,7 +30,9 @@ class ArticleTable {
 					.	"<th>Article Number</th>"
 					. 	"</tr>";
 		foreach ($articles as $article) {
-			$output .= ArticleTable::createRowForArticle($article);
+			if (strpos($article->getAbstract(), $word) !== false) {
+				$output .= ArticleTable::createRowForArticle($article);
+			}
 		}
 		$output .= "</table>";
 		return $output;
