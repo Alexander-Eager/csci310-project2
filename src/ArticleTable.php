@@ -1,54 +1,40 @@
 <?php
 
-// A table which contains the Articles that contain $word
+include("IeeeSearch.php");
 
-	class ArticleTable {
+class ArticleTable {
 
-		public static function generateTable($word) {
-
-			// API call to find articles with $word
-			// 
-
-			// Declaration of output variable
-
-			$output = '<table class="table table-striped table-bordered table-hover">';
-			$output = $output . '<tr>
-					    <th>Article Name</th>
-					    <th>Author Name</th> 
-					    
-					  </tr>';
-
-			// for each article after the api call
-			// foreach ($xmlAuthor->children() as $document) {
-		
-			// Each of these should eventually be <a href>.... inside the <td></td> brackets
-					  /* for example :
-
-							$output = $output . "<tr>" . "<td> <a href = "LINK HERE"> article name </td>"
-				 					. "<td> <a href = "LINK HERE"> author name </td>" 
-									. "</tr>";
-				
-
-					  */
-
-				$output = $output . "<tr>" . "<td> article name </td>"
-				 					. "<td> author name </td>" 
-									. "</tr>";
-
-
-			// }					
-
-			$output = $output . "</table>";
-
-			return $output;
-
-		}
-
+	// new Article("title", ...)
+	// this function makes "<tr><td>title</td><td>"
+	public static function createRowForArticle($article) {
+		$ans = "<tr>";
+		// goes title, authors, pub year, pub title, arnumber
+		$ans .= "<td>" . $article->getTitle() . "</td>";
+		// authors are in an array
+		$ans .= "<td>" . implode("; ", $article->getAuthors());
+		// these are direct
+		$ans .= "<td>" . $article->getPublishYear() . "</td>";
+		$ans .= "<td>" . $article->getPubTitle() . "</td>";
+		$ans .= "<td>" . $article->getArticleNumber() . "</td>";
+		$ans .= "</tr>";
+		return $ans;
 	}
 
-
+	public static function generateArticleTable($word, $articles) {
+		// make the table
+		$output = '<table>';
+		$output .= "<tr><th>Title</th>"
+					.	"<th>Author(s)</th>"
+					.	"<th>Publication Year</th>"
+					.	"<th>Publication Title</th>"
+					.	"<th>Article Number</th>"
+					. 	"</tr>";
+		foreach ($articles as $article) {
+			$output .= ArticleTable::createRowForArticle($article);
+		}
+		$output .= "</table>";
+		return $output;
+	}
+}
 
 ?>
-
-
-

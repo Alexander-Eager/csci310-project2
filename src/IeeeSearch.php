@@ -21,7 +21,7 @@ class IeeeSearch {
 
 		// now just pass all of these parameters into the constructor for a new
 		//	Article
-		$ans = new Article($title, $authors, $publishYear, $abstract,
+		$ans = new Article($title, $authors, $publicationYear, $abstract,
 			$publicationTitle, $publicationNumber, $articleNumber);
 		return $ans;
 	}
