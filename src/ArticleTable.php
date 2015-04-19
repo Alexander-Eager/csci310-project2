@@ -7,13 +7,14 @@
 		public static function generateTable($word) {
 
 			// API call to find articles with $word
-
+			// 
 
 			// Declaration of output variable
 
 			$output = '<table class="table table-striped table-bordered table-hover">';
 
-			// for(each article after the api call) {
+			// for each article after the api call
+			// foreach ($xmlAuthor->children() as $document) {
 		
 				$output = $output . "<tr>" . "<td> article name </td>"
 				 					. "<td> author name </td>" 

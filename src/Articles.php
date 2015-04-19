@@ -14,7 +14,6 @@
 
 <?php
 
-
 	include("ArticleTable.php");
 
 	$table = generateArticleTable($word);
