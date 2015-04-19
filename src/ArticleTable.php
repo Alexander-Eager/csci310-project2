@@ -12,13 +12,18 @@
 			// Declaration of output variable
 
 			$output = '<table class="table table-striped table-bordered table-hover">';
+			$output = $output . '<tr>
+					    <th>Article Name</th>
+					    <th>Author Name</th> 
+					    
+					  </tr>';
 
 			// for each article after the api call
 			// foreach ($xmlAuthor->children() as $document) {
 		
 				$output = $output . "<tr>" . "<td> article name </td>"
 				 					. "<td> author name </td>" 
-									. "</tr>"
+									. "</tr>";
 
 
 			// }					
