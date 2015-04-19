@@ -21,6 +21,16 @@
 			// for each article after the api call
 			// foreach ($xmlAuthor->children() as $document) {
 		
+			// Each of these should eventually be <a href>.... inside the <td></td> brackets
+					  /* for example :
+
+							$output = $output . "<tr>" . "<td> <a href = "LINK HERE"> article name </td>"
+				 					. "<td> <a href = "LINK HERE"> author name </td>" 
+									. "</tr>";
+				
+
+					  */
+
 				$output = $output . "<tr>" . "<td> article name </td>"
 				 					. "<td> author name </td>" 
 									. "</tr>";
