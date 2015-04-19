@@ -11,77 +11,111 @@
 			font-weight: bold;
 		}
 
+		a:link {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:hover {
+			text-decoration: underline;
+			color: blue;
+		}
+
+		a:visited {
+			text-decoration: none;
+			color: purple;
+		}
+
 		#websitetitle {
 			margin-left: 50px;
+			text-align: center;
 		}
 		
 		#logo {
 			width: 140px;
 			height: 140px;
+
 		}
 
-		#cloudBox{
+		#cloudBox {
   			position: absolute; 
-			top: 13em;
+			top: 145px;
 			left:22%;
 		}
-		#submit{
+
+		#submit {
 			clear:left;
    			position: absolute; 
 			bottom: 3em;
 			left: 30%;
 		}
 
-		#backButton{
+		#backButton {
 			clear:left;
   			position: absolute; 
 			left: 8em;
 			width:100px;
 			height:40px;
 		}
-		#downloadButton{
+
+		#downloadButton {
 			clear:left;
   			position: absolute; 
 			left: 30em;
 			width:100px;
 			height:40px;
 		}
-		#wordCloud{
-			height: 300px;
+
+		#wordCloud {
+			height: 450px;
 			width: 66%;
   			position: absolute; 
-			top: 40%;
+			top: 145px;
 			left:19%;
-			size: <?php echo "$size"; ?>;
 			overflow-y: scroll;
 			padding: 10px;
 		}
-		</style>
+	</style>
 </head>
 <body>
-	<div id = "websitetitle"><img src="searchlogo.jpg" id="logo" /></div>
+	<div id = "websitetitle">
+		<img src="searchlogo.jpg" id="logo" />
+	</div>
 
+		<?php
+			include("wordCloudArray.php");
+			include("IeeeSearch.php");
+		?>
+
+		<p id = "wordCloud" style = "background-color:white;">
 			<?php
-				include("wordCloudArray.php");
+				// gets all of the text from the articles and uses it to make
+				// a word cloud
+				$searchTerms = $_GET["searchTerms"];
+				$numResults = $_GET["numResults"];
+				$articles = IeeeSearch::search($searchTerms, $numResults);
+				$text = "";
+				foreach ($articles as $article) {
+					$text .= $article->getAbstract();
+				}
+				$content = new WordCloudArray($text);
+				echo $content->generateWordCloud($content->getMap());
 			?>
-
-				<p id = "wordCloud" style = "background-color:white;">
-					<?php
-					$text = $_GET["text"];
-					$content = new WordCloudArray($text);
-					echo $content->generatewordcloud($content->getMap());
-					?>
-				</p>
+		</p>
 		
 		
 		</textarea>
 		<div id = "submit">
 				<br>
 				<br>
-				<form action:"/index.php">
-					<button type = "button" id = "backButton">Back</button>
-				<form>
-					<button type = "button" id = "downloadButton">Download</button>
+				<button type = "button" id = "backButton"
+							onClick = "location.href = '/index.php'">
+						Back
+				</button>
+				<button type = "button" id = "downloadButton"
+							onClick = "alert('Not Implemented Yet')">
+					Download
+				</button>
 		</div>
 </body>
 </html>

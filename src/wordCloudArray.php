@@ -1,6 +1,6 @@
 <?php
 
-// this represents a distribution of words in lyrics
+// this represents a distribution of words in paper
 class WordCloudArray {
  
 	public $map = array();
@@ -79,19 +79,9 @@ class WordCloudArray {
 		$fontSize = "$modifiedSize" . "px";
 		return $fontSize;
 	}
-
-	//get word color
-	public function wordColor($numTimes,$max){
-		$size = $numTimes;
-		$percent = $size / $max ;
-		$r = 200 + (1 - $percent) * 50;
-		$g = 120 + (1 - $percent) * 50;
-		$b = 80 + (1 - $percent) * 50;
-		return "rgb($r,$g,$b)";
-	}
 	
 	//generate word cloud. input from url
-	public function generatewordcloud($map){
+	public function generateWordCloud($map){
 				$cuttedResult = array();
 				//check if words are more than 250
 				if(count($map) > 250){
@@ -122,21 +112,13 @@ class WordCloudArray {
 				$output = "";//for testing only
 				foreach ($cuttedResult as $word => $numTimes) {
 
-					$color = $this->wordColor($numTimes,$max);
 					$size = $this->wordSize($numTimes,$max);
 
-					$output.="<span style = \"color: $color; font-size: $size\">$word</span>  ";
-					//echo "<span style = \"color: $color; font-size: $size\">$word</span>";
-					//echo "  "; 
-
-
-					//The echo of "<a href" will produce links for each word, which is similar to the code above
-					
-
-					//Something something here to make clickable links for each word
-					echo "<a href=\"/songlistpage.php?artists=" . $_GET["artists"] . "&word=" . $word .
-							"\"><span style = \"color: rgb($r,$g,$b); font-size: $fontSize\">$word</span></a>";
-					echo "  "; 
+					$output.="<a href=\"/Articles.php?word=" 
+						. $word. "&searchTerms=" . $_GET["searchTerms"]
+						. "&numResults=" . $_GET["numResults"] 
+						. "\"><span style = \""
+						. "font-size: $size\">$word</span></a>  ";
 
 				}
 				return $output;//for testing only
