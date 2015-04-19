@@ -46,10 +46,10 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 
 	// test conference retrieve
 	public function testRetrieveArticle6() {
-		$doc = array("conference" => "halfond is great");
+		$doc = array("conference" => "Software engineering");
 		//$a = new Article($title, $author, $date, $excerpt, $conference);
 		$b = IeeeSearch::retrieveArticle($doc);
-		$this->assertEquals("halfond is great", $b->getConference());
+		$this->assertEquals("Software engineering", $b->getConference());
 	}
 
 	// test search function
