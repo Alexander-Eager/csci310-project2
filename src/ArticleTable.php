@@ -8,7 +8,10 @@
 
 			// API call to find articles with $word
 
-			$output = "";
+
+			// Declaration of output variable
+
+			$output = '<table class="table table-striped table-bordered table-hover">';
 
 			// for(each article after the api call) {
 		
@@ -18,6 +21,8 @@
 
 
 			// }					
+
+			$output = $output . "</table>";
 
 			return $output;
 
