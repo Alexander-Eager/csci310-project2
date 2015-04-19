@@ -12,7 +12,8 @@
 <body>
     <div id="maincontent">
 
-    <!-- This is the main logo that you see front and center on the web page. -->
+    <!-- This is the main logo that you see front
+        and center on the web page. -->
     <div id="header">
         <img src="searchlogo.jpg" />
     </div>
@@ -88,16 +89,20 @@
         <div id="search-box2" style="display:inline">
             Search:
             <input type="text" id="search-term">
-            <button id="search-btn" onClick="doSearch($('#search-term').val().toLowerCase(), $('#resultN').val())">
+            <button id="search-btn"
+                    onClick="doSearch($('#search-term').val().toLowerCase(),
+                    $('#resultN').val())">
                 Search
             </button>
         </div>
 
         <!-- Script that the submit button from above uses -->
         <script language="javascript">
-            // executes the user's requested search for searchTerm, with a maximum of numResults
+            // executes the user's requested search for searchTerm,
+            //  with a maximum of numResults
             function doSearch(searchTerm, numResults) {
-                location.href = 'http://localhost/search.php?searchTerms=' + searchTerm + '&numResults=' + numResults;
+                location.href = 'http://localhost/wordcloud.php?searchTerms='
+                    + searchTerm + '&numResults=' + numResults;
             }
         </script>
 

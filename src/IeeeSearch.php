@@ -1,11 +1,11 @@
 <?php
 
-echo "testing<br/>";
-IeeeSearch::search("halfond", 10);
+include("Article.php");
 
 // class that handles searching the IEEE database
 class IeeeSearch {
-	// Parses a particular <document> tag and returns the resulting Article object
+	// Parses a particular <document> tag and returns the resulting Article
+	//	object
 	// returns an Article object
 	public static function retrieveArticle($documentTag) {
 		// all of these are directly obtainable 
@@ -14,34 +14,43 @@ class IeeeSearch {
 		$publicationNumber = $documentTag["punumber"];
 		$publicationYear = intval($documentTag["py"]);
 		$abstract = $documentTag["abstract"];
-		$articleNumber = $documentTag["arnumber"];
-		// getting an array of authors is a littler harder; they are separated by "; "
+		$articleNumber = intval($documentTag["arnumber"]);
+		// getting an array of authors is a littler harder; they are separated
+		//	by "; "
 		$authors = explode("; ", $documentTag["authors"]);
 
-		// now just pass all of these parameters into the constructor for a new Article
-		return new Article($title, $authors, $publishYear, $abstract, $publicationTitle, $publicationNumber,
-			$articleNumber);
+		// now just pass all of these parameters into the constructor for a new
+		//	Article
+		$ans = new Article($title, $authors, $publishYear, $abstract,
+			$publicationTitle, $publicationNumber, $articleNumber);
+		return $ans;
 	}
 
 	// Executes a search query and returns a list of the Articles for that query
 	public static function search($searchTerms, $numResults) {
 		// run a query on both authors and titles
-		$xmlAuthorText = file_get_contents("http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
+		$xmlAuthorText = file_get_contents(
+			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
 			. "au=" . $searchTerms . "&"
 			. "hc=" . $numResults);
-		$xmlTitleText  = file_get_contents("http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
+		$xmlTitleText  = file_get_contents(
+			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
 			. "ti=" . $searchTerms . "&"
 			. "hc=" . $numResults);
 
+		// convert those queries to an XML DOM tree, and then those articles to
+		// JSON, and then to arrays.
+		// the basis of this code comes from
+		// http://stackoverflow.com/questions/8830599/php-convert-xml-to-json
+		$authorArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlAuthorText);
+		$titleArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlTitleText);
 
-		// convert those queries to an XML DOM tree, and then those articles to JSON, and then to arrays.
-		// the basis of this code comes from http://stackoverflow.com/questions/8830599/php-convert-xml-to-json
-		$authorArray = retrieveListOfArticlesFromXML($xmlAuthorText);
-		$titleArray = retrieveListOfArticlesFromXML($xmlTitleText);
-
-		// now we have $authorArray = list of articles where the author matches $searchTerms,
-		//         and $titleArray  = list of articles where the title  matches $searchTerms
-		// so combine these two lists into the articles we want to use, ignoring duplicates
+		// now we have $authorArray = list of articles where the author
+		//	matches $searchTerms,
+		//         and $titleArray = list of articles where the title
+		//	matches $searchTerms
+		// so combine these two lists into the articles we want to use, ignoring
+		//	duplicates
 		$i = 0;
 		$numArticlesTaken = 0;
 		$authorLen = count($authorArray);
@@ -51,8 +60,8 @@ class IeeeSearch {
 			// look at adding the next article in $authorArray
 			if ($i < $authorLen) {
 				// if it is not already in our list, add it
-				$articleToConsider = $authorArray[$i]->getArticleNumber();
-				if (!arrayHasArticle($ans, $articleToConsider)) {
+				$articleToConsider = $authorArray[$i];
+				if (!IeeeSearch::arrayHasArticle($ans, $articleToConsider)) {
 					$ans[] = $articleToConsider;
 					$numArticlesTaken ++;
 				}
@@ -60,12 +69,13 @@ class IeeeSearch {
 			// look at adding the next article in $titleArray
 			if ($i < $titleLen && $numArticlesTaken < $numResults) {
 				// if it is not already in our list, add it
-				$articleToConsider = $titleArray[$i]->getArticleNumber();
-				if (!arrayHasArticle($ans, $articleToConsider)) {
+				$articleToConsider = $titleArray[$i];
+				if (!IeeeSearch::arrayHasArticle($ans, $articleToConsider)) {
 					$ans[] = $articleToConsider;
 					$numArticlesTaken ++;
 				}
 			}
+			$i ++;
 			// in exceptional cases, this may happen because the search terms
 			// do not return enough results
 			if ($i >= $authorLen && $i >= $titleLen) {
@@ -78,8 +88,8 @@ class IeeeSearch {
 	}
 
 	// function that converts a search query result into a list of articles
-	private static function retrieveListOfArticlesFromXML($xmlText) {
-		$xmlTree = simplexml_load_string($xmlAuthorText, null, LIBXML_NOCDATA);
+	public static function retrieveListOfArticlesFromXML($xmlText) {
+		$xmlTree = simplexml_load_string($xmlText, null, LIBXML_NOCDATA);
 		$ans = array();
 		foreach ($xmlTree->children() as $document) {
 			// ensure that we are dealing with a "document" tag
@@ -89,15 +99,17 @@ class IeeeSearch {
 			// convert $document to an associative array and add it to the list
 			$json = json_encode($document);
 			$article = json_decode($json, true);
-			$ans[] = retrieveArticle($article);
+			$ans[] = IeeeSearch::retrieveArticle($article);
 		}
+		return $ans;
 	}
 
 	// function that determines if the given array contains the given article
 	// makes use of the article number
-	private static function arrayHasArticle($array, $article) {
+	public static function arrayHasArticle($array, $article) {
 		foreach ($array as $otherArticle) {
-			if ($article->getArticleNumber() === $otherArticle->getArticleNumber()) {
+			if ($article->getArticleNumber() ===
+				$otherArticle->getArticleNumber()) {
 				return true;
 			}
 		}
