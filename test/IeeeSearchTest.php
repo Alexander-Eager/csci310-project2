@@ -41,7 +41,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 		$doc = array("excerpt" => "halfond is great");
 		//$a = new Article($title, $author, $date, $excerpt, $conference);
 		$b = IeeeSearch::retrieveArticle($doc);
-		$this->assertEquals("halfond is great", $b->getExcerpt());
+		$this->assertEquals("halfond is great", $b->getAbstract());
 	}
 
 	// test conference retrieve
@@ -49,7 +49,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 		$doc = array("conference" => "Software engineering");
 		//$a = new Article($title, $author, $date, $excerpt, $conference);
 		$b = IeeeSearch::retrieveArticle($doc);
-		$this->assertEquals("Software engineering", $b->getConference());
+		$this->assertEquals("Software engineering", $b->getPubTitle());
 	}
 
 	// test search function
