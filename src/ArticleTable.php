@@ -4,13 +4,29 @@
 
 	class ArticleTable {
 
-		public function generateTable(){
+		public static function generateTable($word) {
 
-		}
+			// API call to find articles with $word
+			// 
 
-		public function __construct(){
+			// Declaration of output variable
 
-			// POSTed data will be here to construct the ArticleTable
+			$output = '<table class="table table-striped table-bordered table-hover">';
+
+			// for each article after the api call
+			// foreach ($xmlAuthor->children() as $document) {
+		
+				$output = $output . "<tr>" . "<td> article name </td>"
+				 					. "<td> author name </td>" 
+									. "</tr>"
+
+
+			// }					
+
+			$output = $output . "</table>";
+
+			return $output;
+
 		}
 
 	}
