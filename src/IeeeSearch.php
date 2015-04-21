@@ -11,7 +11,7 @@ class IeeeSearch {
 		// all of these are directly obtainable 
 		$title = $documentTag["title"];
 		$publicationTitle = $documentTag["pubtitle"];
-		$publicationNumber = $documentTag["punumber"];
+		
 		$publicationYear = intval($documentTag["py"]);
 		$abstract = $documentTag["abstract"];
 		$articleNumber = intval($documentTag["arnumber"]);
@@ -22,7 +22,7 @@ class IeeeSearch {
 		// now just pass all of these parameters into the constructor for a new
 		//	Article
 		$ans = new Article($title, $authors, $publicationYear, $abstract,
-			$publicationTitle, $publicationNumber, $articleNumber);
+			$publicationTitle, $articleNumber);
 		return $ans;
 	}
 

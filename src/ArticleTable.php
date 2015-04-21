@@ -1,9 +1,6 @@
 <?php
-
 include("IeeeSearch.php");
-
 class ArticleTable {
-
 	// new Article("title", ...)
 	// this function makes "<tr><td>title</td><td>"
 	public static function createRowForArticle($article) {
@@ -11,7 +8,19 @@ class ArticleTable {
 		// goes title, authors, pub year, pub title, arnumber
 		$ans .= "<td>" . $article->getTitle() . "</td>";
 		// authors are in an array
-		$ans .= "<td>" . implode("; ", $article->getAuthors());
+		if(count($article->getAuthors()) > 1){
+			$ans .= "<td>" . implode("; ", $article->getAuthors());
+			$ans .="</td>";
+		}
+		else if (count($article->getAuthors() == 1)){
+			$array = $article->getAuthors();
+			$ans .= "<td>" . $array[0];
+			$ans .="</td>";
+		}
+		else if(count($article->getAuthors() == 0)){
+			$ans .= "<td>" . "";
+			$ans .="</td>";
+		}
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
 		$ans .= "<td>" . $article->getPubTitle() . "</td>";
@@ -19,7 +28,6 @@ class ArticleTable {
 		$ans .= "</tr>";
 		return $ans;
 	}
-
 	public static function generateArticleTable($word, $articles) {
 		// make the table
 		$output = '<table>';
@@ -30,11 +38,12 @@ class ArticleTable {
 					.	"<th>Article Number</th>"
 					. 	"</tr>";
 		foreach ($articles as $article) {
-			$output .= ArticleTable::createRowForArticle($article);
+			if (strpos($article->getAbstract(), $word) !== false) {
+				$output .= ArticleTable::createRowForArticle($article);
+			}
 		}
 		$output .= "</table>";
 		return $output;
 	}
 }
-
 ?>
