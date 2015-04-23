@@ -83,12 +83,12 @@ class WordCloudArray {
 	//generate word cloud. input from url
 	public function generateWordCloud($map){
 				$cuttedResult = array();
-				//check if words are more than 250
-				if(count($map) > 250){
+				//check if words are more than 100
+				if(count($map) > 100){
 					arsort($map);
 					$i = 0;
 					foreach($map as $word => $numTimes){
-						if($i < 250){
+						if($i < 100){
 							$cuttedResult[$word] = $numTimes;
 						}
 						$i ++;
@@ -114,7 +114,7 @@ class WordCloudArray {
 
 					$size = $this->wordSize($numTimes,$max);
 
-					$output.="<a href=\"/Articles.php?word=" 
+					$output.="<a href=\"/src/Articles.php?word=" 
 						. $word. "&searchTerms=" . $_GET["searchTerms"]
 						. "&numResults=" . $_GET["numResults"] 
 						. "\"><span style = \""

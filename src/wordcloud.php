@@ -53,7 +53,8 @@
 		#backButton {
 			clear:left;
   			position: absolute; 
-			left: 8em;
+			left: 13em;
+			bottom: 1em;
 			width:100px;
 			height:40px;
 		}
@@ -61,17 +62,18 @@
 		#downloadButton {
 			clear:left;
   			position: absolute; 
-			left: 30em;
+			left: 39em;
+			bottom: 1em;
 			width:100px;
 			height:40px;
 		}
 
 		#wordCloud {
-			height: 450px;
-			width: 66%;
+			height: 600px;
+			width: 75%;
   			position: absolute; 
 			top: 145px;
-			left:19%;
+			left:15%;
 			overflow-y: scroll;
 			padding: 10px;
 		}
@@ -109,7 +111,7 @@
 				<br>
 				<br>
 				<button type = "button" id = "backButton"
-							onClick = "location.href = '/index.php'">
+							onClick = "location.href = '/src/index.php'">
 						Back
 				</button>
 				<button type = "button" id = "downloadButton"
