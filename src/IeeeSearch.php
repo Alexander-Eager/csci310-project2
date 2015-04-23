@@ -84,7 +84,6 @@ class IeeeSearch {
 		}
 
 		// return the answer
-		echo count($ans);
 		return $ans;
 	}
 
