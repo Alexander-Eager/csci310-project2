@@ -4,8 +4,14 @@ include("IeeeSearch.php");
 
 class ArticleTable {
 
+	// Takes an Article, and counts the number of occurences
+	// of a word in that article
+	public static function countNumTimes($article, $word) {
+		// TODO
+	}
+
 	// new Article("title", ...)
-	// this function makes "<tr><td>title</td><td>"
+	// this function makes "<tr><td>title</td>...<td>"
 	public static function createRowForArticle($article) {
 		$ans = "<tr>";
 		// goes title, authors, pub year, pub title, arnumber

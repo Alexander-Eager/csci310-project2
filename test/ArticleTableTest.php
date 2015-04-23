@@ -6,6 +6,41 @@
 include('../src/ArticleTable.php');
 
 class ArticleTableTest extends PHPUnit_Framework_TestCase {
+	// test retrieving the word frequency for an article
+	// test1: no words
+	public function testCountNumTimes1() {
+		$abstract = "";
+		$word = "hello";
+		$article = new Article("", "", "", $abstract, "", "");
+		$this->assertEquals(0, ArticleTable::countNumTimes($article, $word));
+	}
+
+	// test2: no words, but the abstract has content
+	public function testCountNumTimes2() {
+		$abstract = "This line is mostly filler";
+		$word = "Halfond";
+		$article = new Article("", "", "", $abstract, "", "");
+		$this->assertEquals(0, ArticleTable::countNumTimes($article, $word));
+	}
+
+	// test3: test to see that it occurs the correct number of times
+	// also tests for case insensitivity
+	public function testCountNumTimes3() {
+		$abstract = "hello world. Hello Halfond.";
+		$word = "hello";
+		$article = new Article("", "", "", $abstract, "", "");
+		$this->assertEquals(2, ArticleTable::countNumTimes($article, $word));
+	}
+
+	// test4: test to see that it occurs the correct number of times
+	// also tests for case insensitivity
+	public function testCountNumTimes4() {
+		$abstract = "Sonal is a great TA. Here, I am using random capitalization: sONal. SONAL";
+		$word = "Sonal";
+		$article = new Article("", "", "", $abstract, "", "");
+		$this->assertEquals(3, ArticleTable::countNumTimes($article, $word));
+	} 
+
 	// test createrowforarticle function
 	// test title
 	public function testCreateRowForArticle1() {
@@ -15,6 +50,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		."</td><td></td></tr>";
 		$this->assertEquals($row,$ans);
 	}
+	
 	// test publish year
 	public function testCreateRowForArticle2() {
 		$article = new Article("","","2010","","","");
@@ -23,6 +59,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		."<td></td></tr>";
 		$this->assertEquals($row,$ans);
 	}
+
 	// test article number
 	public function testCreateRowForArticle3() {
 		$article = new Article("","","","","","10101010");
@@ -31,9 +68,10 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		."<td>10101010</td></tr>";
 		$this->assertEquals($row,$ans);
 	}
+
 	// test generatearticletable function
 	// test1
-	public function testGenerateArticleTable1(){
+	public function testGenerateArticleTable1() {
 
 		$article_1 = new Article("title1","","","","","");
 		$article_2 = new Article("title2","","","","","");
@@ -49,8 +87,9 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		."</table>";
 		$this->assertEquals($table,$ans);
 	}
+
 	// test2
-	public function testGenerateArticleTable2(){
+	public function testGenerateArticleTable2() {
 
 		$article_1 = new Article("","halfond","","","","");
 		$article_2 = new Article("","sonal","","","","");
@@ -66,7 +105,6 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		."</table>";
 		$this->assertEquals($table,$ans);
 	}
-
 }
 
 ?>
