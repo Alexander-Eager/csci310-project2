@@ -1,6 +1,6 @@
 <?php
 
-include('../src/Article.php');
+//include('../src/Article.php');
 
 class ArticleTest extends PHPUnit_Framework_TestCase {
 
