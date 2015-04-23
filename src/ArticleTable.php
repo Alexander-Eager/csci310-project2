@@ -1,13 +1,23 @@
 <?php
 
-include("IeeeSearch.php");
-
 class ArticleTable {
 
 	// Takes an Article, and counts the number of occurences
 	// of a word in that article
 	public static function countNumTimes($article, $word) {
-		// TODO
+		// convert both the abstract and the word to lower case
+		$abstract = strtolower($article->getAbstract());
+		$word = strtolower($word);
+
+		// remove all non-word characters from $abstract and replace
+		// with whitespace
+		// add spaces to the beginning and end of $abstract so that
+		// the substr search will match even if it is at the beginning
+		// or end of the $abstract
+		$abstract = " " . $abstract . " ";
+		$abstract = preg_replace("/[\W\s]+/", " ", $abstract);
+
+		return substr_count($abstract, " " . $word . " ");
 	}
 
 	// new Article("title", ...)

@@ -1,4 +1,5 @@
 <?php
+
 include('../src/IeeeSearch.php');
 
 class ArticleTest extends PHPUnit_Framework_TestCase {
