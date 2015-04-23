@@ -2,7 +2,7 @@
 
 include('../src/IeeeSearch.php');
 
-class ArticleTest extends PHPUnit_Framework_TestCase {
+class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test the retrieve article function
 	// test title retrieve
 	public function testRetrieveArticle1() {
@@ -25,7 +25,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 		$doc = array("authors" => "");
 		//$a = new Article($title, $author, $date, $excerpt, $conference);
 		$b = IeeeSearch::retrieveArticle($doc);
-		$this->assertEquals("", $b->getAuthors()));
+		$this->assertEquals("", $b->getAuthors());
 	}
 
 
@@ -34,7 +34,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 		$doc = array("authors" => "halfond");
 		//$a = new Article($title, $author, $date, $excerpt, $conference);
 		$b = IeeeSearch::retrieveArticle($doc);
-		$this->assertEquals("halfond", $b->getAuthors()));
+		$this->assertEquals("halfond", $b->getAuthors());
 	}
 
 
@@ -109,11 +109,11 @@ class ArticleTest extends PHPUnit_Framework_TestCase {
 		$b = "true";
 		for($i = 0; $i < 10; $i ++){
 			if ( strpos($a[$i]->getTitle(),'halfond') == false 
-				&& !in_array("halfond", $a[$i]->getAuthors() )
+				&& !in_array("halfond", $a[$i]->getAuthors() ))
 				$b = "false";
 		}
 		$this->assertEquals("true", $b);
 	}
-
 }
+
 ?>
