@@ -1,0 +1,15 @@
+4/23
+May
+1) I researched regular expressions to facilitate future coding practices.
+2) It might take a bit longer to finish the UI features.
+3) I will continue working on the UI features and I will help Alex with test cases
+
+Kevin
+1) I learned additional methods of sorting tables by frequency of an object inside the table
+2) I am currently working on data storage of article word frequency
+3) I will continue to implement the frequency feature for the generation of the article table
+
+Alex
+1) I helped the group figure out what to do for this sprint.
+2) I was not able to attend the last meeting due to class conflict, so I’ve fallen a bit behind on the group activities.  I have mostly caught up by now, though.
+3) I will try to get word frequency working.
