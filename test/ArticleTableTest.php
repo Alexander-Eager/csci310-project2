@@ -51,7 +51,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCreateRowForArticle1() {
 		$article = new Article("title",array(),0,"","","");
 		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td>title</td><td> </td><td></td><td></td><td>"
+		$row = "<tr><td>title</td><td></td><td>0</td><td></td><td>"
 		."</td></tr>";
 		$this->assertEquals($row,$ans);
 	}
@@ -60,7 +60,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCreateRowForArticle2() {
 		$article = new Article("",array(),2010,"","","");
 		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td></td><td> </td><td>2010</td><td></td><td></td>"
+		$row = "<tr><td></td><td></td><td>2010</td><td></td><td></td>"
 		."</tr>";
 		$this->assertEquals($row,$ans);
 	}
@@ -69,7 +69,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCreateRowForArticle3() {
 		$article = new Article("",array(),0,"","",10101010);
 		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td></td><td> </td><td></td><td></td>"
+		$row = "<tr><td></td><td></td><td>0</td><td></td>"
 		."<td>10101010</td></tr>";
 		$this->assertEquals($row,$ans);
 	}
