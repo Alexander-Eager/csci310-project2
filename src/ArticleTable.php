@@ -1,30 +1,30 @@
 <?php
-<<<<<<< HEAD
+
 include("IeeeSearch.php");
 class ArticleTable {
+
+<<<<<<< HEAD
 =======
-
-class ArticleTable {
-
 	// Takes an Article, and counts the number of occurences
 	// of a word in that article
 	public static function countNumTimes($article, $word) {
 		// convert both the abstract and the word to lower case
-		$abstract = strtolower($article->getAbstract());
+		$textToSearch = strtolower($article->getAbstract())
+			. " " . implode(" ", $article->getAuthors());
 		$word = strtolower($word);
 
-		// remove all non-word characters from $abstract and replace
+		// remove all non-word characters from $textToSearch and replace
 		// with whitespace
-		// add spaces to the beginning and end of $abstract so that
+		// add spaces to the beginning and end of $textToSearch so that
 		// the substr search will match even if it is at the beginning
-		// or end of the $abstract
-		$abstract = " " . $abstract . " ";
-		$abstract = preg_replace("/[\W\s]+/", " ", $abstract);
+		// or end of the $textToSearch
+		$textToSearch = " " . $textToSearch . " ";
+		$textToSearch = preg_replace("/[\W\s]+/", " ", $textToSearch);
 
-		return substr_count($abstract, " " . $word . " ");
+		return substr_count($textToSearch, " " . $word . " ");
 	}
 
->>>>>>> 1ffff66111c61787f4ed7ff832479c5217c0c936
+>>>>>>> b9aea2cc387ba6e7cce7407f99516590059b5aa3
 	// new Article("title", ...)
 	// this function makes "<tr><td>title</td>...<td>"
 	public static function createRowForArticle($article) {
@@ -32,16 +32,16 @@ class ArticleTable {
 		// goes title, authors, pub year, pub title, arnumber
 		$ans .= "<td>" . $article->getTitle() . "</td>";
 		// authors are in an array
-		if(count($article->getAuthors()) > 1){
+		if(count($article->getAuthors()) > 1) {
 			$ans .= "<td>" . implode("; ", $article->getAuthors());
 			$ans .="</td>";
 		}
-		else if (count($article->getAuthors() == 1)){
+		else if (count($article->getAuthors()) == 1) {
 			$array = $article->getAuthors();
 			$ans .= "<td>" . $array[0];
 			$ans .="</td>";
 		}
-		else if(count($article->getAuthors() == 0)){
+		else if(count($article->getAuthors()) == 0) {
 			$ans .= "<td>" . "";
 			$ans .="</td>";
 		}
@@ -52,6 +52,7 @@ class ArticleTable {
 		$ans .= "</tr>";
 		return $ans;
 	}
+	
 	public static function generateArticleTable($word, $articles) {
 		// make the table
 		$output = '<table>';
