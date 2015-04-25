@@ -1,0 +1,22 @@
+Meeting 4/20
+
+May
+I will be working on articles.php and adding UI features.
+
+Eric Wang
+1)
+2)
+3) I will be working on improving the word cloud UI
+
+Eric Tang
+1)
+2)
+3) I will be working on making the word cloud look better(delete scroll bar)
+
+Kevin 
+I will be working on sorting the table by frequency and making the words in the table clickable
+
+Alex
+1)
+2)
+3) I will be looking into possible implementations for the conference table and the BibTex links in the table.  I will also be helping Kevin figure out the table code so that he can do his work.
