@@ -42,8 +42,9 @@ class IeeeSearch {
 		// JSON, and then to arrays.
 		// the basis of this code comes from
 		// http://stackoverflow.com/questions/8830599/php-convert-xml-to-json
-		$authorArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlAuthorText);
-		$titleArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlTitleText);
+		$authorArray = IeeeSearch::retrieveListOfArticlesFromXML(
+			$xmlAuthorText);
+		$titleArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlTitleText);g
 
 		// now we have $authorArray = list of articles where the author
 		//	matches $searchTerms,
