@@ -114,7 +114,7 @@ class WordCloudArray {
 
 					$size = $this->wordSize($numTimes,$max);
 
-					$output.="<a href=\"/src/Articles.php?word=" 
+					$output.="<a href=\"/Articles.php?word=" 
 						. $word. "&searchTerms=" . $_GET["searchTerms"]
 						. "&numResults=" . $_GET["numResults"] 
 						. "\"><span style = \""
