@@ -1,0 +1,16 @@
+meeting 4/22
+
+May
+1) I have been working on improving the UI with Eric Tang
+2) I am going to work on helping download word cloud as an image
+3) I will research how to make websites downloadable or a screenshot downloadable
+
+Eric Tang
+1)  I have change the limit of word cloud from 250 to 100 and make the UI look better.
+2)  Still trying to find a way to download word cloud as an img.
+3) I will make word cloud look more attractive
+
+Kevin 
+1) I have researched how to sort the words in the table by frequency
+2) I am currently working on how to store the data about each article’s word frequency
+3) I will continue to implement the frequency feature for the article table generation step of this project
