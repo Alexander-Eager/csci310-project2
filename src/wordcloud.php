@@ -111,7 +111,7 @@
 				<br>
 				<br>
 				<button type = "button" id = "backButton"
-							onClick = "location.href = '/index.php'">
+							onClick = "location.href = '/src/index.php'">
 						Back
 				</button>
 				<button type = "button" id = "downloadButton"

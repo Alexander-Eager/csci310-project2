@@ -10,15 +10,15 @@ class ArticleTable {
 			. " " . implode(" ", $article->getAuthors());
 		$word = strtolower($word);
 
-		// remove all non-word characters from $abstract and replace
+		// remove all non-word characters from $textToSearch and replace
 		// with whitespace
-		// add spaces to the beginning and end of $abstract so that
+		// add spaces to the beginning and end of $textToSearch so that
 		// the substr search will match even if it is at the beginning
-		// or end of the $abstract
-		$abstract = " " . $abstract . " ";
-		$abstract = preg_replace("/[\W\s]+/", " ", $abstract);
+		// or end of the $textToSearch
+		$textToSearch = " " . $textToSearch . " ";
+		$textToSearch = preg_replace("/[\W\s]+/", " ", $textToSearch);
 
-		return substr_count($abstract, " " . $word . " ");
+		return substr_count($textToSearch, " " . $word . " ");
 	}
 
 	// new Article("title", ...)
@@ -48,7 +48,7 @@ class ArticleTable {
 		$ans .= "</tr>";
 		return $ans;
 	}
-
+	
 	public static function generateArticleTable($word, $articles) {
 		// make the table
 		$output = '<table>';
@@ -67,5 +67,4 @@ class ArticleTable {
 		return $output;
 	}
 }
-
 ?>
