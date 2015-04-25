@@ -6,7 +6,8 @@ class ArticleTable {
 	// of a word in that article
 	public static function countNumTimes($article, $word) {
 		// convert both the abstract and the word to lower case
-		$abstract = strtolower($article->getAbstract());
+		$textToSearch = strtolower($article->getAbstract())
+			. " " . implode(" ", $article->getAuthors());
 		$word = strtolower($word);
 
 		// remove all non-word characters from $abstract and replace
@@ -27,7 +28,19 @@ class ArticleTable {
 		// goes title, authors, pub year, pub title, arnumber
 		$ans .= "<td>" . $article->getTitle() . "</td>";
 		// authors are in an array
-		$ans .= "<td>" . implode("; ", $article->getAuthors());
+		if(count($article->getAuthors()) > 1) {
+			$ans .= "<td>" . implode("; ", $article->getAuthors());
+			$ans .="</td>";
+		}
+		else if (count($article->getAuthors()) == 1) {
+			$array = $article->getAuthors();
+			$ans .= "<td>" . $array[0];
+			$ans .="</td>";
+		}
+		else if(count($article->getAuthors()) == 0) {
+			$ans .= "<td>" . "";
+			$ans .="</td>";
+		}
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
 		$ans .= "<td>" . $article->getPubTitle() . "</td>";
