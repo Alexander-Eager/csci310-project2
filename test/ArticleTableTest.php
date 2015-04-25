@@ -8,6 +8,7 @@
 // now that i have a list of articles, do i have the correct table?
 
 include('../src/ArticleTable.php');
+include('../src/Article.php');
 
 class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	// test retrieving the word frequency for an article
