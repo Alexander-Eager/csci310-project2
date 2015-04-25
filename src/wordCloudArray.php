@@ -6,19 +6,21 @@ class WordCloudArray {
 	public $map = array();
 
 	// makes the map from word -> number of occurences
-	public function returnWords($input){
-		//most common words from wikipedia
-		$commonWords = array("the","be","to","of","and","a","in","that","have","i","it",
-		"for","not","on","with","he","as","you","do","at","this","but","his","by","from",
-		"they","we","say","her","she","or","an","will","my","one","all","would","there","their",
-		"what","so","up","out","if","about","who","get","which","go","me","when","make","can",
-		"like","time","no","just","him","know","take","people","into","year","your","good","some",
-		"could","them","see","other","than","then","now","look","only","come","its","over","think",
-		"also","back","after","use","two","how","our","work","first","well","way","even","new","want",
-		"because","any","these","give","day","most","us","s","m","ll","ve","is","am");
+	public function returnWords($input) {
+		// most common words from wikipedia
+		$commonWords = array("the","be","to","of","and","a","in","that","have",
+		"i","it","for","not","on","with","he","as","you","do","at","this","but",
+		"his","by","from","they","we","say","her","she","or","an","will","my",
+		"one","all","would","there","their","what","so","up","out","if","about",
+		"who","get","which","go","me","when","make","can","like","time","no",
+		"just","him","know","take","people","into","year","your","good","some",
+		"could","them","see","other","than","then","now","look","only","come",
+		"its","over","think","also","back","after","use","two","how","our",
+		"work","first","well","way","even","new","want","because","any","these",
+		"give","day","most","us","s","m","ll","ve","is","am");
 
 
-		//remove tags
+		// remove tags
 		$input = preg_replace("/<[^>]*>/", " ", $input);
 		$input = str_replace("<br />", " ", $input);
 		$input = str_replace(",", " ", $input);
@@ -35,17 +37,17 @@ class WordCloudArray {
 		$input = str_replace("-", " ", $input);
 		$input = str_replace("*", " ", $input);
 		$input = strtolower($input);
-		//replace all multiple spaces into single space
+		// replace all multiple spaces into single space
 		$output = preg_replace('!\s+!', ' ', $input);
 		//split into string
 		$output = trim($output);
 		$wordArray = explode(" ",$output);
 
-		//remove common words
+		// remove common words
 
-		for($i = count($wordArray) - 1 ; $i > -1; $i--){
-			for($j = 0; $j < count($commonWords); $j++){
-				if($wordArray[$i] == $commonWords[$j]){
+		for($i = count($wordArray) - 1 ; $i > -1; $i--) {
+			for($j = 0; $j < count($commonWords); $j++) {
+				if($wordArray[$i] == $commonWords[$j]) {
 					unset($wordArray[$i]);
 					break;
 				}
@@ -53,7 +55,7 @@ class WordCloudArray {
 		}
 		
 		$wordArray = array_count_values($wordArray);
-		foreach($wordArray as $key => $value){
+		foreach($wordArray as $key => $value) {
 			if($key == "")
 				unset($wordArray[$key]);
 		}
@@ -71,8 +73,8 @@ class WordCloudArray {
 		return $this->map;
 	}
 
-	//get word size
-	public function wordSize($numTimes,$max){
+	// get word size
+	public function wordSize($numTimes,$max) {
 		$size = $numTimes;
 		$percent = $size / $max ;
 		$modifiedSize = 15 + $percent * 55;
@@ -80,15 +82,15 @@ class WordCloudArray {
 		return $fontSize;
 	}
 	
-	//generate word cloud. input from url
-	public function generateWordCloud($map){
+	// generate word cloud. input from url
+	public function generateWordCloud($map) {
 				$cuttedResult = array();
-				//check if words are more than 100
-				if(count($map) > 100){
+				// check if words are more than 100
+				if(count($map) > 100) {
 					arsort($map);
 					$i = 0;
-					foreach($map as $word => $numTimes){
-						if($i < 100){
+					foreach($map as $word => $numTimes) {
+						if($i < 100) {
 							$cuttedResult[$word] = $numTimes;
 						}
 						$i ++;
@@ -105,11 +107,11 @@ class WordCloudArray {
 					$cuttedResult = $map;
 				}
 				$max = 0;
-				foreach ($cuttedResult as $word => $numTimes){
+				foreach ($cuttedResult as $word => $numTimes) {
 					if($numTimes > $max)
 						$max = $numTimes;
 				}
-				$output = "";//for testing only
+				$output = ""; // for testing only
 				foreach ($cuttedResult as $word => $numTimes) {
 
 					$size = $this->wordSize($numTimes,$max);
@@ -121,7 +123,7 @@ class WordCloudArray {
 						. "font-size: $size\">$word</span></a>  ";
 
 				}
-				return $output;//for testing only
+				return $output; // for testing only
 
 		}
 }
