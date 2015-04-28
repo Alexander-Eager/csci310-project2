@@ -1,8 +1,6 @@
 Sprint 3 Backlog
-1) Words in table clickable
-2) Back Button, additional UI
-3) Improved Word Cloud UI
+1) Words in table clickable and creates another word cloud
+2) Back Button and making the UI more user friendly
+3) Improved Word Cloud UI (improving on the physical structure of the cloud)
 4) Sort table by frequency
-~5) BibTek (looking into)
-~6) Download Word Cloud (looking into)
-~7) Conference Table (looking into)
+5) Conference Table (creating the table that holds the conferences)
