@@ -1,0 +1,25 @@
+4/24
+Alex
+1) Wrote test cases and code for ArticleTable word frequency functionality.
+2) The test cases are coming up with a lot of failures throughout our project, which means we will have to do a lot of debugging next meeting.
+3) I will try to figure out the errors.
+
+Eric Tang
+1) Fixed can’t connect to github server problem
+2) I have problem in converting paragraph into canvas
+3) I will work on download button by using html2canvas 
+
+May
+1) I helped Alex set up new test cases in ArticleTable.php. I also attempted to correct the errors in test files.
+2) I have issues with working on the php UI features without causing merge conflicts. I need to push multiple times to the server to edit the features.
+3) I will continue working on the UI features and with helping Alex on errors.
+
+KEVIN KIM
+1) I have been updating the code in our files to match the coding standards
+2) I have been experiencing difficulty in parsing through the files fast enough to find the word count for each article
+3) I will continue to implement the frequency feature
+
+Ryan Zhou
+1) I have been working on the iteration report 
+2) I have some difficulties on the report as I need to wait for some of my teammates for information
+3) I will finish whatever progress I can make by myself

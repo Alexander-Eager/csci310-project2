@@ -3,8 +3,6 @@
 include("IeeeSearch.php");
 class ArticleTable {
 
-<<<<<<< HEAD
-=======
 	// Takes an Article, and counts the number of occurences
 	// of a word in that article
 	public static function countNumTimes($article, $word) {
@@ -24,7 +22,6 @@ class ArticleTable {
 		return substr_count($textToSearch, " " . $word . " ");
 	}
 
->>>>>>> b9aea2cc387ba6e7cce7407f99516590059b5aa3
 	// new Article("title", ...)
 	// this function makes "<tr><td>title</td>...<td>"
 	public static function createRowForArticle($article) {

@@ -101,7 +101,7 @@
             // executes the user's requested search for searchTerm,
             //  with a maximum of numResults
             function doSearch(searchTerm, numResults) {
-                location.href = '/wordcloud.php?searchTerms='
+                location.href = '/src/wordcloud.php?searchTerms='
                     + searchTerm + '&numResults=' + numResults;
             }
         </script>
