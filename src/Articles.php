@@ -23,7 +23,6 @@
 	<?php
 
 		include("ArticleTable.php");
-		include("IeeeSearch.php");
 
 		$searchTerms = $_GET["searchTerms"];
 		$numResults = $_GET["numResults"];

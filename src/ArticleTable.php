@@ -1,6 +1,7 @@
 <?php
 
 include("IeeeSearch.php");
+
 class ArticleTable {
 
 	// Takes an Article, and counts the number of occurences
@@ -17,7 +18,7 @@ class ArticleTable {
 		// the substr search will match even if it is at the beginning
 		// or end of the $textToSearch
 		$textToSearch = " " . $textToSearch . " ";
-		$textToSearch = preg_replace("/[\W\s]+/", " ", $textToSearch);
+		$textToSearch = preg_replace("/[\W\s]+/", "  ", $textToSearch);
 
 		return substr_count($textToSearch, " " . $word . " ");
 	}
