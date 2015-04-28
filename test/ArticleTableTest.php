@@ -38,12 +38,12 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	}
 
 	// test4: test to see that it occurs the correct number of times
-	// also tests for case insensitivity
+	// also tests for case insensitivity and author
 	public function testCountNumTimes4() {
 		$abstract = "Sonal is a great TA. Here, I am using random capitalization: sONal. SONAL";
 		$word = "Sonal";
-		$article = new Article("", array(), 0, $abstract, "", "");
-		$this->assertEquals(3, ArticleTable::countNumTimes($article, $word));
+		$article = new Article("", array("SOnal"), 0, $abstract, "", "");
+		$this->assertEquals(4, ArticleTable::countNumTimes($article, $word));
 	} 
 
 	// test createrowforarticle function

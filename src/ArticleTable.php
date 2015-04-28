@@ -8,8 +8,9 @@ class ArticleTable {
 	// of a word in that article
 	public static function countNumTimes($article, $word) {
 		// convert both the abstract and the word to lower case
-		$textToSearch = strtolower($article->getAbstract())
+		$textToSearch = $article->getAbstract()
 			. " " . implode(" ", $article->getAuthors());
+		$textToSearch = strtolower($textToSearch);
 		$word = strtolower($word);
 
 		// remove all non-word characters from $textToSearch and replace
