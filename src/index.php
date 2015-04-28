@@ -88,7 +88,8 @@
         <!-- This has the input bar and the submit button -->
         <div id="search-box2" style="display:inline">
             Search:
-            <input type="text" id="search-term">
+            <input type="text" id="search-term" onkeydown="Javascript: if (event.keyCode==13) doSearch($('#search-term').val().toLowerCase(),
+                    $('#resultN').val());">
             <button id="search-btn"
                     onClick="doSearch($('#search-term').val().toLowerCase(),
                     $('#resultN').val())">
