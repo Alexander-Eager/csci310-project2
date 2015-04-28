@@ -72,10 +72,11 @@
 			height: 600px;
 			width: 75%;
   			position: absolute; 
-			top: 145px;
+			top: 95px;
 			left:15%;
 			overflow-y: scroll;
 			padding: 10px;
+			line-height: 30px;
 		}
 	</style>
 </head>
