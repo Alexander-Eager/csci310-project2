@@ -9,6 +9,7 @@
 			float: center;
 			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 			font-weight: bold;
+			color: #FFCC00;
 		}
 
 		a:link {
@@ -77,6 +78,8 @@
 			overflow-y: scroll;
 			padding: 10px;
 			line-height: 30px;
+			background-color: gray;
+			border: 1px solid #FAFAF2;
 		}
 	</style>
 </head>
@@ -99,7 +102,8 @@
 				$articles = IeeeSearch::search($searchTerms, $numResults);
 				$text = "";
 				foreach ($articles as $article) {
-					$text .= $article->getAbstract();
+					$text .= $article->getAbstract() . " ";
+					$text .= implode(" ", $article->getAuthors()) . " ";
 				}
 				$content = new WordCloudArray($text);
 				echo $content->generateWordCloud($content->getMap());
