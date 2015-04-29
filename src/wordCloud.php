@@ -88,17 +88,15 @@
 		<img src="searchlogo.jpg" id="logo" />
 	</div>
 
-		<?php
-			include("wordCloudArray.php");
-			include("IeeeSearch.php");
-		?>
 
 		<p id = "wordCloud" style = "background-color:white;">
 			<?php
+				include_once("autoload_manager.php");
+
 				// gets all of the text from the articles and uses it to make
 				// a word cloud
-				$searchTerms = $_GET["searchTerms"];
-				$numResults = $_GET["numResults"];
+				$searchTerms = urldecode($_GET["searchTerms"]);
+				$numResults = urldecode($_GET["numResults"]);
 				$articles = IeeeSearch::search($searchTerms, $numResults);
 				$text = "";
 				foreach ($articles as $article) {
@@ -116,7 +114,7 @@
 				<br>
 				<br>
 				<button type = "button" id = "backButton"
-							onClick = "location.href = '/src/index.php'">
+							onClick = "location.href = '/index.php'">
 						Back
 				</button>
 				<button type = "button" id = "downloadButton"

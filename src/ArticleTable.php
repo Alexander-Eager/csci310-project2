@@ -1,6 +1,7 @@
 <?php
 
-include("IeeeSearch.php");
+include_once("../src/autoload_manager.php");
+
 class ArticleTable {
 
 	// Takes an Article, and counts the number of occurences

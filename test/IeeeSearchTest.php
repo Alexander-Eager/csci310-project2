@@ -1,6 +1,6 @@
 <?php
 
-//include('../src/IeeeSearch.php');
+include_once("../src/autoload_manager.php");
 
 class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test the retrieve article function

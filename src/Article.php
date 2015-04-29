@@ -1,5 +1,7 @@
 <?php
 
+include_once("../src/autoload_manager.php");
+
 class Article {
 	private $title = "";
 	private $authors = array("");

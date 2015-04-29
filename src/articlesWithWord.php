@@ -23,8 +23,7 @@
 	<div class = "table">
 		<?php
 
-			include("ArticleTable.php");
-			
+			include_once("../src/autoload_manager.php");
 
 			$searchTerms = $_GET["searchTerms"];
 			$numResults = $_GET["numResults"];
