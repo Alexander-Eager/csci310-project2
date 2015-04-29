@@ -1,9 +1,5 @@
 <?php
 
-// 1. The second parameter to new Article() should should be an array of strings
-// 2. Third should be a number.
-// 3. 6th should be a number.
-
 // given an article, do i make the correct row?
 // now that i have a list of articles, do i have the correct table?
 
@@ -50,18 +46,18 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	// test title
 	public function testCreateRowForArticle1() {
 		$article = new Article("title",array(),0,"","","");
-		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td>title</td><td></td><td>0</td><td></td><td>"
-		."</td></tr>";
+		$ans = ArticleTable::createRowForArticle($article, 0);
+		$row = "<tr><td>title</td><td></td><td>0</td><td></td><td>0</td><td>"
+			."</td></tr>";
 		$this->assertEquals($row,$ans);
 	}
 	
 	// test publish year
 	public function testCreateRowForArticle2() {
 		$article = new Article("",array(),2010,"","","");
-		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td></td><td></td><td>2010</td><td></td><td></td>"
-		."</tr>";
+		$ans = ArticleTable::createRowForArticle($article, 0);
+		$row = "<tr><td></td><td></td><td>2010</td><td></td><td>0</td><td></td>"
+			."</tr>";
 		$this->assertEquals($row,$ans);
 	}
 
@@ -69,8 +65,8 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCreateRowForArticle3() {
 		$article = new Article("",array(),0,"","",10101010);
 		$ans = ArticleTable::createRowForArticle($article);
-		$row = "<tr><td></td><td></td><td>0</td><td></td>"
-		."<td>10101010</td></tr>";
+		$row = "<tr><td></td><td></td><td>0</td><td></td><td>0</td>"
+			."<td>10101010</td></tr>";
 		$this->assertEquals($row,$ans);
 	}
 
@@ -82,9 +78,9 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 		$articles = array($article_1, $article_2);
 		$ans = ArticleTable::generateArticleTable("halfond", $articles);
 		$table = "<table><tr><th>Title</th><th>Author(s)</th>"
-		."<th>Publication Year</th><th>Publication Title</th>"
-		."<th>Article Number</th></tr>"
-		."</table>";
+			. "<th>Publication Year</th><th>Publication Title</th>"
+			. "<th>Article Number</th></tr>"
+			. "</table>";
 		$this->assertEquals($table,$ans);
 	}
 

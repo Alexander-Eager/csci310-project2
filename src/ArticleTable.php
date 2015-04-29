@@ -26,7 +26,7 @@ class ArticleTable {
 
 	// new Article("title", ...)
 	// this function makes "<tr><td>title</td>...<td>"
-	public static function createRowForArticle($article) {
+	public static function createRowForArticle($article, $numTimes) {
 		$ans = "<tr>";
 		// goes title, authors, pub year, pub title, arnumber
 		$ans .= "<td>" . $article->getTitle() . "</td>";
@@ -47,6 +47,7 @@ class ArticleTable {
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
 		$ans .= "<td>" . $article->getPubTitle() . "</td>";
+		$ans .= "<td>" . $numTimes . "</td>";
 		$ans .= "<td>" . $article->getArticleNumber() . "</td>";
 		$ans .= "</tr>";
 		return $ans;
@@ -59,11 +60,13 @@ class ArticleTable {
 					.	"<th>Author(s)</th>"
 					.	"<th>Publication Year</th>"
 					.	"<th>Publication Title</th>"
+					.	"<th>Frequency of Word</th>"
 					.	"<th>Article Number</th>"
 					. 	"</tr>";
 		foreach ($articles as $article) {
-			if (strpos($article->getAbstract(), $word) !== false) {
-				$output .= ArticleTable::createRowForArticle($article);
+			$numTimes = ArticleTable::countNumTimes($article, $word);
+			if ($numTimes > 0) {
+				$output .= createRowForArticle($article, $numTimes);
 			}
 		}
 		$output .= "</table>";
