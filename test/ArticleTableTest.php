@@ -1,14 +1,6 @@
 <?php
 
-// 1. The second parameter to new Article() should should be an array of strings
-// 2. Third should be a number.
-// 3. 6th should be a number.
-
-// given an article, do i make the correct row?
-// now that i have a list of articles, do i have the correct table?
-
-include('../src/ArticleTable.php');
-// include('../src/Article.php');
+include("../src/autoload_manager.php");
 
 class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	// test retrieving the word frequency for an article

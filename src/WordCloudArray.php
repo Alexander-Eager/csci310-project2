@@ -1,5 +1,7 @@
 <?php
 
+include_once("../src/autoload_manager.php");
+
 // this represents a distribution of words in paper
 class WordCloudArray {
  
@@ -8,7 +10,7 @@ class WordCloudArray {
 	// makes the map from word -> number of occurences
 	public function returnWords($input) {
 
-		//most common words from wikipedia
+/*		//most common words from wikipedia
 		$commonWords = array("the","be","to","of","and","a","in","that","have","i","it",
 		"for","not","on","with","he","as","you","do","at","this","but","his","by","from",
 		"they","we","say","her","she","or","an","will","my","one","all","would","there","their",
@@ -17,7 +19,9 @@ class WordCloudArray {
 		"could","them","see","other","than","then","now","look","only","come","its","over","think",
 		"also","back","after","use","two","how","our","work","first","well","way","even","new","want",
 		"because","any","these","give","day","most","us","s","m","ll","ve","is","am");
-/*
+*/
+
+
 		// most common words from wikipedia
 		$commonWords = array("the","be","to","of","and","a","in","that","have",
 		"i","it","for","not","on","with","he","as","you","do","at","this","but",
@@ -29,7 +33,6 @@ class WordCloudArray {
 		"its","over","think","also","back","after","use","two","how","our",
 		"work","first","well","way","even","new","want","because","any","these",
 		"give","day","most","us","s","m","ll","ve","is","am");
-*/
 
 		// remove tags
 		$input = preg_replace("/<[^>]*>/", " ", $input);
@@ -125,10 +128,8 @@ class WordCloudArray {
 		}
 		$output = "";
 		foreach ($cuttedResult as $word => $numTimes) {
-
 			$size = $this->wordSize($numTimes, $max);
-
-			$output .= "<a href=\"/Articles.php?word=" 
+			$output .= "<a href=\"/articlesWithWord.php?word=" 
 				. $word. "&searchTerms=" . $_GET["searchTerms"]
 				. "&numResults=" . $_GET["numResults"] 
 				. "\"><span style = \""

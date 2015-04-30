@@ -9,6 +9,7 @@
 			float: center;
 			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 			font-weight: bold;
+			color: #FFCC00;
 		}
 
 		a:link {
@@ -72,10 +73,13 @@
 			height: 600px;
 			width: 75%;
   			position: absolute; 
-			top: 145px;
+			top: 95px;
 			left:15%;
 			overflow-y: scroll;
 			padding: 10px;
+			line-height: 30px;
+			background-color: gray;
+			border: 1px solid #FAFAF2;
 		}
 	</style>
 </head>
@@ -84,21 +88,20 @@
 		<img src="searchlogo.jpg" id="logo" />
 	</div>
 
-		<?php
-			include("wordCloudArray.php");
-			include("IeeeSearch.php");
-		?>
 
 		<p id = "wordCloud" style = "background-color:white;">
 			<?php
+				include_once("autoload_manager.php");
+
 				// gets all of the text from the articles and uses it to make
 				// a word cloud
-				$searchTerms = $_GET["searchTerms"];
-				$numResults = $_GET["numResults"];
+				$searchTerms = urldecode($_GET["searchTerms"]);
+				$numResults = urldecode($_GET["numResults"]);
 				$articles = IeeeSearch::search($searchTerms, $numResults);
 				$text = "";
 				foreach ($articles as $article) {
-					$text .= $article->getAbstract();
+					$text .= $article->getAbstract() . " ";
+					$text .= implode(" ", $article->getAuthors()) . " ";
 				}
 				$content = new WordCloudArray($text);
 				echo $content->generateWordCloud($content->getMap());
@@ -111,7 +114,7 @@
 				<br>
 				<br>
 				<button type = "button" id = "backButton"
-							onClick = "location.href = '/src/index.php'">
+							onClick = "location.href = '/index.php'">
 						Back
 				</button>
 				<button type = "button" id = "downloadButton"
