@@ -129,9 +129,9 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	// test2
 	public function testGenerateArticleTable2() {
 		$article_1 = new Article("title1", array("halfond", "author1"),
-			1999, "halfond HALFOND", "pub1", 1);
+			1999, "halfond H-ALFOND", "pub1", 1);
 		$article_2 = new Article("title2", array("author2", "halfond"),
-			2007, "Halfond ~halfffond.", "pub2", 123);
+			2007, "Halfond ~halfffond. --Halfond==", "pub2", 123);
 
 		$articles = array($article_1, $article_2);
 		$ans = ArticleTable::generateArticleTable("halfond", $articles);
@@ -146,20 +146,20 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 						. "<th>Article Number</th>"
 					. "</tr>"
 					. "<tr>"
-						. "<td>title1</td>"
-						. "<td>halfond; author1</td>"
-						. "<td>1999</td>"
-						. "<td>pub1</td>"
-						. "<td>3</td>"
-						. "<td>1</td>"
-					. "</tr>"
-					. "<tr>"
 						. "<td>title2</td>"
 						. "<td>author2; halfond</td>"
 						. "<td>2007</td>"
 						. "<td>pub2</td>"
-						. "<td>2</td>"
+						. "<td>3</td>"
 						. "<td>123</td>"
+					. "</tr>"
+					. "<tr>"
+						. "<td>title1</td>"
+						. "<td>halfond; author1</td>"
+						. "<td>1999</td>"
+						. "<td>pub1</td>"
+						. "<td>2</td>"
+						. "<td>1</td>"
 					. "</tr>"
 				. "</table>";
 

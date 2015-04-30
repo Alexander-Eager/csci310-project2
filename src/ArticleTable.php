@@ -63,12 +63,30 @@ class ArticleTable {
 					.	"<th>Frequency of Word</th>"
 					.	"<th>Article Number</th>"
 				.  "</tr>";
+		// this will map the number of times a word occurs onto a list
+		// of articles' row representation that have that frequency
+		$numTimesOntoRow = array();
 		foreach ($articles as $article) {
 			$numTimes = ArticleTable::countNumTimes($article, $word);
+			// only include articles that have the word
 			if ($numTimes > 0) {
-				$output .= ArticleTable::createRowForArticle($article, $numTimes);
+				// if this numTimes has not yet been encountered, add it
+				if (!array_key_exists($numTimes, $numTimesOntoRow)) {
+					$numTimesOntoRow[$numTimes] = array();
+				}
+				// add the row to the list for that numTimes
+				$numTimesOntoRow[$numTimes][] =
+					ArticleTable::createRowForArticle($article, $numTimes);
 			}
 		}
+		$keys = array_keys($numTimesOntoRow);
+		rsort($keys);
+		foreach ($keys as $numTimes) {
+			foreach ($numTimesOntoRow[$numTimes] as $row) {
+				$output .= $row;
+			}
+		}
+		// close out the table
 		$output .= "</table>";
 		return $output;
 	}
