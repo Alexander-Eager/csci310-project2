@@ -24,8 +24,7 @@ class ArticleTable {
 		return substr_count($textToSearch, " " . $word . " ");
 	}
 
-	// new Article("title", ...)
-	// this function makes "<tr><td>title</td>...<td>"
+	// 
 	public static function createRowForArticle($article, $numTimes) {
 		$ans = "<tr>";
 		// goes title, authors, pub year, pub title, arnumber
@@ -56,13 +55,14 @@ class ArticleTable {
 	public static function generateArticleTable($word, $articles) {
 		// make the table
 		$output = '<table>';
-		$output .= "<tr><th>Title</th>"
+		$output .= "<tr>"
+					.	"<th>Title</th>"
 					.	"<th>Author(s)</th>"
 					.	"<th>Publication Year</th>"
 					.	"<th>Publication Title</th>"
 					.	"<th>Frequency of Word</th>"
 					.	"<th>Article Number</th>"
-					. 	"</tr>";
+				.  "</tr>";
 		foreach ($articles as $article) {
 			$numTimes = ArticleTable::countNumTimes($article, $word);
 			if ($numTimes > 0) {
