@@ -132,7 +132,7 @@ class ConferenceTableTest extends PHPUnit_Framework_TestCase {
 	public function testGenerateConferenceTable2() {
 
 		$article_1 = new Article("", array("halfond"), 0, "", "", 0, 0, "");
-		$article_2 = new Article("", array("sonal"), 0, "", "", 0, 0, "");
+		$article_2 = new Article("", array("sonal", "halfond"), 0, "", "", 0, 0, "");
 		$articles = array($article_1, $article_2);
 		$ans = ConferenceTable::generateConferenceTable($articles);
 		$table = "<table>"
@@ -172,7 +172,7 @@ class ConferenceTableTest extends PHPUnit_Framework_TestCase {
 						. "<td>"
 						. "</td>"
 						. "<td>"
-							. "sonal"
+							. "sonal; halfond"
 						. "</td>"
 						. "<td>"
 							. "0"

@@ -17,7 +17,7 @@ function arrays_are_similar($a, $b) {
 }
 
 
-class wordCloudArrayTest extends PHPUnit_Framework_TestCase{
+class WordCloudArrayTest extends PHPUnit_Framework_TestCase{
 	// test if common words and tags are ignored
 	public function testReturnWords_1() {
 		$a = new WordCloudArray("There are lots of common<br> words** in" 
@@ -87,30 +87,30 @@ class wordCloudArrayTest extends PHPUnit_Framework_TestCase{
 	// test word size function
 	// should all be in the range of 15-70 
 	public function testWordSize1(){
-		$a = new wordCloudArray("");
+		$a = new WordCloudArray("");
 		$fontsize = $a->wordSize(6,6);
 		$this->assertEquals( "70px", $fontsize );
 	}
 
 	public function testWordSize2(){
-		$a = new wordCloudArray("");
+		$a = new WordCloudArray("");
 		$fontsize = $a->wordSize(3,6);
 		$this->assertEquals( "42.5px", $fontsize );
 	}
 
 	// test generate word cloud function
-	public function testGenerateWordCloud(){
-		$a = new wordCloudArray("hello hello professor halfond");
+	public function testGenerateWordCloud1() {
+		$a = new WordCloudArray("hello hello professor halfond");
 		$b = $a->generatewordcloud($a->getMap(),"searchTerm",10);
 		$this->assertEquals( "<a href=\"/articlesWithWord.php?"
-			."word=hello&searchTerms=searchTerm&numResults=10\">"
-			."<span style = \"font-size: 70px\">hello</span></a>  "
-			."<a href=\"/articlesWithWord.php?"
-			."word=professor&searchTerms=searchTerm&numResults=10\">"
-			."<span style = \"font-size: 42.5px\">professor</span></a>  "
-			."<a href=\"/articlesWithWord.php?"
-			."word=halfond&searchTerms=searchTerm&numResults=10\">"
-			."<span style = \"font-size: 42.5px\">halfond</span></a>  ", $b);
+			. "word=hello&searchTerms=searchTerm&numResults=10\">"
+			. "<span style = \"font-size: 70px\">hello</span></a>  "
+			. "<a href=\"/articlesWithWord.php?"
+			. "word=professor&searchTerms=searchTerm&numResults=10\">"
+			. "<span style = \"font-size: 42.5px\">professor</span></a>  "
+			. "<a href=\"/articlesWithWord.php?"
+			. "word=halfond&searchTerms=searchTerm&numResults=10\">"
+			. "<span style = \"font-size: 42.5px\">halfond</span></a>  ", $b);
 	}
 }
 
