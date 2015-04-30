@@ -15,7 +15,19 @@
     	table, th, td {
     		border: 1px solid black;
     	}
-    </style>
+	
+		body{
+			color: #FFCC00;
+		}
+
+		.table{
+			background-color: gray;
+			border: 1px solid #FAFAF2;
+			font-size: 1em;
+			margin: 2em;
+		}
+
+	</style>
 
     <link href="ut2style.css" rel="stylesheet" type="text/css" />
 
@@ -57,20 +69,9 @@
 			echo $table;
 
 		?>
-	</div>
-	<style>
-	
-		body{
-			color: #FFCC00;
-		}
 
-		.table{
-			background-color: gray;
-			border: 1px solid #FAFAF2;
-			font-size: 1em;
-			margin: 2em;
-		}
-	</style>
+		<input action="action" type="button" value="Back" onclick="history.go(-1);" />
+	</div>
 
 </body>
 
