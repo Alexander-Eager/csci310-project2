@@ -27,8 +27,15 @@ class ArticleTable {
 	// 
 	public static function createRowForArticle($article, $numTimes) {
 		$ans = "<tr>";
-		// goes title, authors, pub year, pub title, arnumber
-		$ans .= "<td>" . $article->getTitle() . "</td>";
+		// goes title, authors, pub year, pub title, frequency, arnumber
+		// replace the title with one that has links in it to more word clouds
+		$titleWithLinks = $article->getTitle();
+		$titleWithLinks = preg_replace("/\b(\w+)\b/",
+			"<a href='/wordCloud.php\?searchTerms=$1&"
+			. "numResults=10'>$1</a>", $titleWithLinks);
+
+
+		$ans .= "<td>" . $titleWithLinks . "</td>";
 		// authors are in an array
 		if(count($article->getAuthors()) > 1) {
 			$ans .= "<td>" . implode("; ", $article->getAuthors());
@@ -46,11 +53,13 @@ class ArticleTable {
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
 		// add link to conference table
-		$ans .= "<td>" . "<a href=\"articlesWithConference.php?conference="
-				.$article->getPubTitle() . ">" 
+		$ans .= "<td>" . "<a href='articlesWithConference.php?conference="
+				.$article->getPubNumber() . "'>" 
 				.$article->getPubTitle() . "</a>" . "</td>";
 		$ans .= "<td>" . $numTimes . "</td>";
-		$ans .= "<td>" . $article->getArticleNumber() . "</td>";
+		// add link to article
+		$ans .= "<td>" . "<a href='" . $article->getPdfLink()
+			. "'>" . $article->getArticleNumber() . "</a></td>";
 		$ans .= "</tr>";
 		return $ans;
 	}

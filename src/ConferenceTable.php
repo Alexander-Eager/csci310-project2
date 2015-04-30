@@ -31,7 +31,7 @@ class ConferenceTable {
 		return $ans;
 	}
 
-	public static function generateConferenceTable($word, $articles) {
+	public static function generateConferenceTable($articles) {
 		// make the table
 		$output = '<table>';
 		$output .= "<tr><th>Title</th>"
@@ -41,7 +41,7 @@ class ConferenceTable {
 					.	"<th>Article Number</th>"
 					. 	"</tr>";
 		foreach ($articles as $article) {
-			$output .= ArticleTable::createRowForArticle($article);			
+			$output .= ConferenceTable::createRowForArticle($article);			
 		}
 		$output .= "</table>";
 		return $output;

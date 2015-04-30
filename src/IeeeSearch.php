@@ -91,13 +91,13 @@ class IeeeSearch {
 
 	// Executes a search query and returns a list of the Articles that has
 	// the same publication (which we equate to conference)
-	public static function searchConference($pubNumber, $numResults) {
+	public static function searchConference($pubNumber) {
 		// get the XML query results
 		$xmlText = file_get_contents(
 			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
 			. "pn=" . urlencode("$pubNumber"));
 		// use that to get an array of articles
-		$ans = retrieveListOfArticlesFromXML($xmlText);
+		$ans = IeeeSearch::retrieveListOfArticlesFromXML($xmlText);
 
 		return $ans;
 	}
