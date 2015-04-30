@@ -109,7 +109,8 @@
 					$text .= implode(" ", $article->getAuthors()) . " ";
 				}
 				$content = new WordCloudArray($text);
-				echo $content->generateWordCloud($content->getMap());
+				echo $content->generateWordCloud($content->getMap()
+					,$_GET["searchTerms"],$_GET["numResults"]);
 			?>
 		</p>
 		

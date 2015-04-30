@@ -91,10 +91,26 @@ class wordCloudArrayTest extends PHPUnit_Framework_TestCase{
 		$fontsize = $a->wordSize(6,6);
 		$this->assertEquals( "70px", $fontsize );
 	}
+
 	public function testWordSize2(){
 		$a = new wordCloudArray("");
 		$fontsize = $a->wordSize(3,6);
 		$this->assertEquals( "42.5px", $fontsize );
+	}
+
+	// test generate word cloud function
+	public function testGenerateWordCloud(){
+		$a = new wordCloudArray("hello hello professor halfond");
+		$b = $a->generatewordcloud($a->getMap(),"searchTerm",10);
+		$this->assertEquals( "<a href=\"/articlesWithWord.php?"
+			."word=hello&searchTerms=searchTerm&numResults=10\">"
+			."<span style = \"font-size: 70px\">hello</span></a>  "
+			."<a href=\"/articlesWithWord.php?"
+			."word=professor&searchTerms=searchTerm&numResults=10\">"
+			."<span style = \"font-size: 42.5px\">professor</span></a>  "
+			."<a href=\"/articlesWithWord.php?"
+			."word=halfond&searchTerms=searchTerm&numResults=10\">"
+			."<span style = \"font-size: 42.5px\">halfond</span></a>  ", $b);
 	}
 }
 
