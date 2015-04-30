@@ -2,53 +2,57 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Word Cloud Page</title>
-
+	<title>Scholar Search Word Cloud Page</title>
 	<style>
 		body {
 			float: center;
-			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			/* Center align */
+			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif, clavo, adelle, 
 			font-weight: bold;
+			/* Several fonts allows backup ones to be chosen if the first ones are not found */
 			color: #FFCC00;
 		}
 
 		a:link {
 			text-decoration: none;
-			color: black;
+			color: 000014;
 		}
 
 		a:hover {
 			text-decoration: underline;
-			color: blue;
+			/* Improved UI, allow use to see the word underline */
+			color: #0000FF;
+			/* Change colors to custom, previous was too basic*/
 		}
 
 		a:visited {
 			text-decoration: none;
-			color: purple;
+			color: #330080;
+			/* These ones too*/
 		}
 
 		#websitetitle {
-			margin-left: 50px;
+			margin-left: 51px;
 			text-align: center;
 		}
 		
 		#logo {
-			width: 140px;
-			height: 140px;
-
+			/* Original postioning was off and no professional*/
+			width: 141px;
+			height: 141px;
 		}
 
 		#cloudBox {
   			position: absolute; 
 			top: 145px;
-			left:22%;
+			left:21%;
 		}
 
 		#submit {
 			clear:left;
    			position: absolute; 
 			bottom: 3em;
-			left: 30%;
+			left: 31%;
 		}
 
 		#backButton {
@@ -56,28 +60,30 @@
   			position: absolute; 
 			left: 13em;
 			bottom: 1em;
-			width:100px;
-			height:40px;
+			width:101px;
+			height:41px;
 		}
 
 		#downloadButton {
+			/* Download not implemented set for next iteration */
 			clear:left;
   			position: absolute; 
 			left: 39em;
 			bottom: 1em;
-			width:100px;
-			height:40px;
+			width:101px;
+			height:41px;
 		}
 
 		#wordCloud {
-			height: 600px;
-			width: 75%;
+			/* Tweaked some values */
+			height: 601px;
+			width: 76%;
   			position: absolute; 
-			top: 95px;
-			left:15%;
+			top: 96px;
+			left:16%;
 			overflow-y: scroll;
-			padding: 10px;
-			line-height: 30px;
+			padding: 11px;
+			line-height: 31px;
 			background-color: gray;
 			border: 1px solid #FAFAF2;
 		}
@@ -87,7 +93,6 @@
 	<div id = "websitetitle">
 		<img src="searchlogo.jpg" id="logo" />
 	</div>
-
 
 		<p id = "wordCloud" style = "background-color:white;">
 			<?php
@@ -107,7 +112,6 @@
 				echo $content->generateWordCloud($content->getMap());
 			?>
 		</p>
-		
 		
 		</textarea>
 		<div id = "submit">

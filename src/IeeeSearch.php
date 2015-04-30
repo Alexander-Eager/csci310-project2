@@ -10,7 +10,8 @@ class IeeeSearch {
 		// all of these are directly obtainable 
 		$title = $documentTag["title"];
 		$publicationTitle = $documentTag["pubtitle"];
-		
+		$publicationNumber = intval($documentTag["punumber"]);
+		$pdfLink = $documentTag["pdf"];
 		$publicationYear = intval($documentTag["py"]);
 		$abstract = $documentTag["abstract"];
 		$articleNumber = intval($documentTag["arnumber"]);
@@ -18,10 +19,11 @@ class IeeeSearch {
 		//	by "; "
 		$authors = explode("; ", $documentTag["authors"]);
 
+
 		// now just pass all of these parameters into the constructor for a new
 		//	Article
 		$ans = new Article($title, $authors, $publicationYear, $abstract,
-			$publicationTitle, $articleNumber);
+			$publicationTitle, $articleNumber, $publicationNumber, $pdfLink);
 		return $ans;
 	}
 
@@ -87,11 +89,17 @@ class IeeeSearch {
 		return $ans;
 	}
 
-	// Executes a search query and returns a list of the Articles that has the same pulish title
-	// should return articles that have the same publish title
-	// TODO: alex can you implement this
-	public static function searchConference($conference, $numResults) {
-	
+	// Executes a search query and returns a list of the Articles that has
+	// the same publication (which we equate to conference)
+	public static function searchConference($pubNumber, $numResults) {
+		// get the XML query results
+		$xmlText = file_get_contents(
+			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
+			. "pn=" . urlencode("$pubNumber"));
+		// use that to get an array of articles
+		$ans = retrieveListOfArticlesFromXML($xmlText);
+
+		return $ans;
 	}
 
 	// function that converts a search query result into a list of articles
