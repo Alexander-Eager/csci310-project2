@@ -116,6 +116,16 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("http://pdf.com", $b->getPdfLink());
 	}
 
+	// test author if it is an array
+	public function testRetrieveArticle13() {
+		$doc = array("title" => "sample title", "authors" => array(),
+			"pubtitle" => "Software engineering", "py" => "", "abstract" => "",
+			"arnumber" => "", "punumber" => "0", "pdf" => "");
+		$b = IeeeSearch::retrieveArticle($doc);
+		$this->assertEquals("Software engineering", $b->getPubTitle());
+	}
+
+
 	// test search function
 	// test if the number of search result is correct
 	public function testSearch1() {
@@ -149,6 +159,19 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	public function testSearch4() {
 		$a = IeeeSearch::search("halfond", 10000);
 		$this->assertEquals(true, count($a) < 10000);
+	}
+
+	//test that searchterm is in title no author
+	public function testSearch5() {
+		$a = IeeeSearch::search("computer", 10);
+		$b = true;
+		for($i = 0; $i < 10; $i ++){
+			if ( strpos($a[$i]->getTitle(), 'halfond') === false 
+				&& !in_array("halfond", $a[$i]->getAuthors())) {
+				$b = false;
+			}
+		}
+		$this->assertEquals(false, $b);
 	}
 
 	// test searchConference function

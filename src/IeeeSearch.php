@@ -19,7 +19,7 @@ class IeeeSearch {
 		//	by "; "
 		// might already be an array
 		$authors = array();
-		if (gettype($documentTag["authors"]) == "array") {
+		if (gettype($documentTag["authors"]) === "array") {
 			$authors = $documentTag["authors"];
 		} else {
 			$authors = explode("; ", $documentTag["authors"]);
@@ -131,6 +131,7 @@ class IeeeSearch {
 		foreach ($array as $otherArticle) {
 			if ($article->getArticleNumber() ===
 				$otherArticle->getArticleNumber()) {
+				echo "marker9";
 				return true;
 			}
 		}
