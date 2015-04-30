@@ -30,3 +30,10 @@ body {
 	background-size: 10px 10px;
 	width: 500px;
 }
+
+.table{
+	color:#FFCC00;
+	background-color: gray;
+	border: 1px solid #FAFAF2;
+	font-size: 1em;
+}

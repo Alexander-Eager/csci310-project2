@@ -88,7 +88,8 @@
         <!-- This has the input bar and the submit button -->
         <div id="search-box2" style="display:inline">
             Search:
-            <input type="text" id="search-term">
+            <input type="text" id="search-term" onkeydown="Javascript: if (event.keyCode==13) doSearch($('#search-term').val().toLowerCase(),
+                    $('#resultN').val());">
             <button id="search-btn"
                     onClick="doSearch($('#search-term').val().toLowerCase(),
                     $('#resultN').val())">
@@ -101,7 +102,7 @@
             // executes the user's requested search for searchTerm,
             //  with a maximum of numResults
             function doSearch(searchTerm, numResults) {
-                location.href = '/src/wordcloud.php?searchTerms='
+                location.href = '/wordCloud.php?searchTerms='
                     + searchTerm + '&numResults=' + numResults;
             }
         </script>

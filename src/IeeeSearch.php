@@ -1,12 +1,11 @@
 <?php
 
-include("Article.php");
+include_once("autoload_manager.php");
 
 // class that handles searching the IEEE database
 class IeeeSearch {
 	// Parses a particular <document> tag and returns the resulting Article
 	//	object
-	// returns an Article object
 	public static function retrieveArticle($documentTag) {
 		// all of these are directly obtainable 
 		$title = $documentTag["title"];
@@ -31,11 +30,11 @@ class IeeeSearch {
 		// run a query on both authors and titles
 		$xmlAuthorText = file_get_contents(
 			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
-			. "au=" . $searchTerms . "&"
+			. "au=" . urlencode($searchTerms) . "&"
 			. "hc=" . $numResults);
 		$xmlTitleText  = file_get_contents(
 			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
-			. "ti=" . $searchTerms . "&"
+			. "ti=" . urlencode($searchTerms) . "&"
 			. "hc=" . $numResults);
 
 		// convert those queries to an XML DOM tree, and then those articles to

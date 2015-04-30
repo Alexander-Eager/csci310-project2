@@ -1,6 +1,6 @@
 <?php
 
-include("IeeeSearch.php");
+include_once("../src/autoload_manager.php");
 
 class ArticleTable {
 
@@ -66,7 +66,7 @@ class ArticleTable {
 		foreach ($articles as $article) {
 			$numTimes = ArticleTable::countNumTimes($article, $word);
 			if ($numTimes > 0) {
-				$output .= createRowForArticle($article, $numTimes);
+				$output .= ArticleTable::createRowForArticle($article, $numTimes);
 			}
 		}
 		$output .= "</table>";
