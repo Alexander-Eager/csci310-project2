@@ -86,7 +86,67 @@ class IeeeSearch {
 		// return the answer
 		return $ans;
 	}
+	
+	//  Executes a search query and returns a list of the Articles that has the same pulish title
+	public static function search($conference, $numResults) {
+		// run a query on both authors and titles
+		$xmlAuthorText = file_get_contents(
+			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
+			. "au=" . urlencode($searchTerms) . "&"
+			. "hc=" . $numResults);
+		$xmlTitleText  = file_get_contents(
+			"http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?"
+			. "ti=" . urlencode($searchTerms) . "&"
+			. "hc=" . $numResults);
 
+		// convert those queries to an XML DOM tree, and then those articles to
+		// JSON, and then to arrays.
+		// the basis of this code comes from
+		// http://stackoverflow.com/questions/8830599/php-convert-xml-to-json
+		$authorArray = IeeeSearch::retrieveListOfArticlesFromXML(
+			$xmlAuthorText);
+		$titleArray = IeeeSearch::retrieveListOfArticlesFromXML($xmlTitleText);
+
+		// now we have $authorArray = list of articles where the author
+		//	matches $searchTerms,
+		//         and $titleArray = list of articles where the title
+		//	matches $searchTerms
+		// so combine these two lists into the articles we want to use, ignoring
+		//	duplicates
+		$i = 0;
+		$numArticlesTaken = 0;
+		$authorLen = count($authorArray);
+		$titleLen  = count($titleArray);
+		$ans = array();
+		while ($numArticlesTaken < $numResults) {
+			// look at adding the next article in $authorArray
+			if ($i < $authorLen) {
+				// if it is not already in our list, add it
+				$articleToConsider = $authorArray[$i];
+				if (!IeeeSearch::arrayHasArticle($ans, $articleToConsider)) {
+					$ans[] = $articleToConsider;
+					$numArticlesTaken ++;
+				}
+			}
+			// look at adding the next article in $titleArray
+			if ($i < $titleLen && $numArticlesTaken < $numResults) {
+				// if it is not already in our list, add it
+				$articleToConsider = $titleArray[$i];
+				if (!IeeeSearch::arrayHasArticle($ans, $articleToConsider)) {
+					$ans[] = $articleToConsider;
+					$numArticlesTaken ++;
+				}
+			}
+			$i ++;
+			// in exceptional cases, this may happen because the search terms
+			// do not return enough results
+			if ($i >= $authorLen && $i >= $titleLen) {
+				break;
+			}
+		}
+
+		// return the answer
+		return $ans;
 	// function that converts a search query result into a list of articles
 	public static function retrieveListOfArticlesFromXML($xmlText) {
 		$xmlTree = simplexml_load_string($xmlText, null, LIBXML_NOCDATA);

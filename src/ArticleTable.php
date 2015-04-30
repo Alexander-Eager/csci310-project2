@@ -45,7 +45,10 @@ class ArticleTable {
 		}
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
-		$ans .= "<td>" . $article->getPubTitle() . "</td>";
+		// add link to conference table
+		$ans .= "<td>" . "<a href=\"articlesWithConference.php?conference="
+				.$article->getPubTitle() . ">" 
+				.$article->getPubTitle() . "</a>" . "</td>";
 		$ans .= "<td>" . $article->getArticleNumber() . "</td>";
 		$ans .= "</tr>";
 		return $ans;
