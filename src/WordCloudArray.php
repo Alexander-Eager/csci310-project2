@@ -9,19 +9,6 @@ class WordCloudArray {
 
 	// makes the map from word -> number of occurences
 	public function returnWords($input) {
-
-/*		//most common words from wikipedia
-		$commonWords = array("the","be","to","of","and","a","in","that","have","i","it",
-		"for","not","on","with","he","as","you","do","at","this","but","his","by","from",
-		"they","we","say","her","she","or","an","will","my","one","all","would","there","their",
-		"what","so","up","out","if","about","who","get","which","go","me","when","make","can",
-		"like","time","no","just","him","know","take","people","into","year","your","good","some",
-		"could","them","see","other","than","then","now","look","only","come","its","over","think",
-		"also","back","after","use","two","how","our","work","first","well","way","even","new","want",
-		"because","any","these","give","day","most","us","s","m","ll","ve","is","am");
-*/
-
-
 		// most common words from wikipedia
 		$commonWords = array("the","be","to","of","and","a","in","that","have",
 		"i","it","for","not","on","with","he","as","you","do","at","this","but",
@@ -130,7 +117,7 @@ class WordCloudArray {
 		foreach ($cuttedResult as $word => $numTimes) {
 			$size = $this->wordSize($numTimes, $max);
 			$output .= "<a href=\"/articlesWithWord.php?word=" 
-				. $word. "&searchTerms=" . $_GET["searchTerms"]
+				. $word . "&searchTerms=" . $_GET["searchTerms"]
 				. "&numResults=" . $_GET["numResults"] 
 				. "\"><span style = \""
 				. "font-size: $size\">$word</span></a>  ";
