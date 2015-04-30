@@ -40,18 +40,12 @@
 
 			include_once("../src/autoload_manager.php");
 
-			$searchTerms = $_GET["searchTerms"];
-			$numResults = $_GET["numResults"];
+			$searchTerms = urldecode($_GET["searchTerms"]);
+			$numResults = urldecode($_GET["numResults"]);
 			
-			// retrieve all articles for query, and remove any that don't have
-			// $word
+			// retrieve all articles for query
 			$articles = IeeeSearch::search($searchTerms, $numResults);
-			for ($i = 0; $i < count($articles); $i ++) {
-				if (strpos($articles[$i]->getAbstract(), $word) === false) {
-					unset($articles[$i]);
-				}
-			}
-			$table = ArticleTable::generateArticleTable($_GET["word"],
+			$table = ArticleTable::generateArticleTable(urldecode($_GET["word"]),
 				$articles);
 
 			echo $table;

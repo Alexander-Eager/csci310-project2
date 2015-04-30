@@ -23,20 +23,7 @@ class WordCloudArray {
 
 		// remove tags
 		$input = preg_replace("/<[^>]*>/", " ", $input);
-		$input = str_replace("<br />", " ", $input);
-		$input = str_replace(",", " ", $input);
-		$input = str_replace(".", " ", $input);
-		$input = str_replace("?", " ", $input);
-		$input = str_replace("!", " ", $input);
-		$input = str_replace(":", " ", $input);
-		$input = str_replace(";", " ", $input);
-		$input = str_replace("\"", " ", $input);
-		$input = str_replace("(", " ", $input);
-		$input = str_replace(")", " ", $input);
-		$input = str_replace("\n", " ", $input);
-		$input = str_replace("'", " ", $input);
-		$input = str_replace("-", " ", $input);
-		$input = str_replace("*", " ", $input);
+		$input = preg_replace("/\W/", " ", $input);
 		$input = strtolower($input);
 		// replace all multiple spaces into single space
 		$output = preg_replace('!\s+!', ' ', $input);
