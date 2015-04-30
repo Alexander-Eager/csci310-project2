@@ -8,7 +8,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCountNumTimes1() {
 		$abstract = "";
 		$word = "hello";
-		$article = new Article("", array(), 0, $abstract, "", 0);
+		$article = new Article("", array(), 0, $abstract, "", 0, 0, "");
 		$this->assertEquals(0, ArticleTable::countNumTimes($article, $word));
 	}
 
@@ -16,7 +16,7 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCountNumTimes2() {
 		$abstract = "This line is mostly filler";
 		$word = "Halfond";
-		$article = new Article("", array(), 0, $abstract, "", 0);
+		$article = new Article("", array(), 0, $abstract, "", 0, 0, "");
 		$this->assertEquals(0, ArticleTable::countNumTimes($article, $word));
 	}
 
@@ -25,23 +25,24 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 	public function testCountNumTimes3() {
 		$abstract = "hello world. Hello Halfond.";
 		$word = "hello";
-		$article = new Article("", array(), 0, $abstract, "", 0);
+		$article = new Article("", array(), 0, $abstract, "", 0, 0, "");
 		$this->assertEquals(2, ArticleTable::countNumTimes($article, $word));
 	}
 
 	// test4: test to see that it occurs the correct number of times
 	// also tests for case insensitivity and author
 	public function testCountNumTimes4() {
-		$abstract = "Sonal is a great TA. Here, I am using random capitalization: sONal. SONAL";
+		$abstract = "Sonal is a great TA. Here, I am using random "
+			. "capitalization: sONal. SONAL";
 		$word = "Sonal";
-		$article = new Article("", array("SOnal"), 0, $abstract, "", 0);
+		$article = new Article("", array("SOnal"), 0, $abstract, "", 0, 0, "");
 		$this->assertEquals(4, ArticleTable::countNumTimes($article, $word));
 	} 
 
 	// test createRowforarticle function
 	// test title
 	public function testCreateRowForArticle1() {
-		$article = new Article("title", array(), 0, "", "", 0);
+		$article = new Article("title", array(), 0, "", "", 0, 0, "");
 		$ans = ArticleTable::createRowForArticle($article, 0);
 		$row 	= "<tr>"
 					. "<td>title</td>"
@@ -49,7 +50,8 @@ class ArticleTableTest extends PHPUnit_Framework_TestCase {
 					. "<td>0</td>"
 					. "<td></td>"
 					. "<td>0</td>"
-					. "<td>0</td>"
+					. "<td><a href='/articlesWithConference?"
+						. "conference=0'></a></td>"
 				. "</tr>";
 		$this->assertEquals($row, $ans);
 	}

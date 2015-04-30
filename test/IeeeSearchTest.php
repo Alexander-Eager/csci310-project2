@@ -7,7 +7,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test title retrieve
 	public function testRetrieveArticle1() {
 		$doc = array("title" => "sample title", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("sample title", $b->getTitle());
 	}
@@ -15,7 +16,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test empty title
 	public function testRetrieveArticle2() {
 		$doc = array("title" => "", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("", $b->getTitle());
 	}
@@ -23,7 +25,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test author retrieve for empty author
 	public function testRetrieveArticle3() {
 		$doc = array("title" => "sample title", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$c = array("");
 		$this->assertEquals($c, $b->getAuthors());
@@ -32,7 +35,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test author retrieve for single author
 	public function testRetrieveArticle4() {
 		$doc = array("title" => "sample title", "authors" => "halfond",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$c = array("halfond");
 		$this->assertEquals($c, $b->getAuthors());
@@ -41,7 +45,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test author retrieve for multiple authors
 	public function testRetrieveArticle5() {
 		$doc = array("title" => "sample title", "authors" => "halfond; sonal",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$c = array("halfond", "sonal");
 		$this->assertEquals(2, count(array_intersect($c, $b->getAuthors())));
@@ -51,7 +56,7 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	public function testRetrieveArticle6() {
 	$doc = array("title" => "sample title", "authors" => "",
 			"pubtitle" => "", "py" => "2012", "abstract" => "",
-			"arnumber" => "");
+			"arnumber" => "", "punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals(2012, $b->getPublishYear());
 	}
@@ -59,7 +64,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test date retrieve empty
 	public function testRetrieveArticle7() {
 		$doc = array("title" => "sample title", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals(0, $b->getPublishYear());
 	}
@@ -68,8 +74,7 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	public function testRetrieveArticle8() {
 		$doc = array("title" => "sample title", "authors" => "",
 			"pubtitle" => "", "py" => "", "abstract" => "halfond is great",
-			"arnumber" => "");
-		//$a = new Article($title, $author, $date, $excerpt, $conference);
+			"arnumber" => "", "punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("halfond is great", $b->getAbstract());
 	}
@@ -77,8 +82,8 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test excerpt retrieve empty
 	public function testRetrieveArticle9() {
 		$doc = array("title" => "sample title", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
-		//$a = new Article($title, $author, $date, $excerpt, $conference);
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("", $b->getAbstract());
 	}
@@ -87,8 +92,7 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	public function testRetrieveArticle10() {
 		$doc = array("title" => "sample title", "authors" => "",
 			"pubtitle" => "Software engineering", "py" => "", "abstract" => "",
-			"arnumber" => "");
-		//$a = new Article($title, $author, $date, $excerpt, $conference);
+			"arnumber" => "", "punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("Software engineering", $b->getPubTitle());
 	}
@@ -96,10 +100,20 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 	// test pubtitle retrieve empty
 	public function testRetrieveArticle11() {
 		$doc = array("title" => "sample title", "authors" => "",
-			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "");
-		//$a = new Article($title, $author, $date, $excerpt, $conference);
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "0", "pdf" => "");
 		$b = IeeeSearch::retrieveArticle($doc);
 		$this->assertEquals("", $b->getPubTitle());
+	}
+
+	// test publisher number retrieval and PDF
+	public function testRetrieveArticle12() {
+		$doc = array("title" => "", "authors" => "",
+			"pubtitle" => "", "py" => "", "abstract" => "", "arnumber" => "",
+			"punumber" => "19374", "pdf" => "http://pdf.com");
+		$b = IeeeSearch::retrieveArticle($doc);
+		$this->assertEquals(19374, $b->getPubNumber());
+		$this->assertEquals("http://pdf.com", $b->getPdfLink());
 	}
 
 	// test search function
