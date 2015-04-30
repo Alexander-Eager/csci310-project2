@@ -15,6 +15,9 @@
     	table, th, td {
     		border: 1px solid black;
     	}
+    	a {
+    		color: white;
+    	}
     </style>
 
     <link href="ut2style.css" rel="stylesheet" type="text/css" />

@@ -17,7 +17,13 @@ class IeeeSearch {
 		$articleNumber = intval($documentTag["arnumber"]);
 		// getting an array of authors is a littler harder; they are separated
 		//	by "; "
-		$authors = explode("; ", $documentTag["authors"]);
+		// might already be an array
+		$authors = array();
+		if (gettype($documentTag["authors"]) == "array") {
+			$authors = $documentTag["authors"];
+		} else {
+			$authors = explode("; ", $documentTag["authors"]);
+		}
 
 
 		// now just pass all of these parameters into the constructor for a new

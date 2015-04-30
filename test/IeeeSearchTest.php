@@ -153,22 +153,22 @@ class IeeeSearchTest extends PHPUnit_Framework_TestCase {
 
 	// test searchConference function
 	// test on getting the correct articles with pubNumber
-	public function testSearchConference1(){
+	public function testSearchConference1() {
 		$a = IeeeSearch::searchConference(5004);
 		$flag = true;
 		for($i = 0; $i < count($a); $i++){
-			if($a[$i].getPubNumber() != 5004)
+			if($a[$i]->getPubNumber() != 5004)
 				$flag = false;
 		}
-		$this->assertEquals($flag,true);
+		$this->assertEquals(true, $flag);
 	}
 
 	// test if pubNumber matches the conference
-	public function testSearchConference2(){
+	public function testSearchConference2() {
 		$a = IeeeSearch::searchConference(5004);
 		$b = "Frontiers in Education Conference, 1997. 27th Annual Conference."
 			." Teaching and Learning in an Era of Change. Proceedings.";
-		$this->assertEquals($a[0]->getPubTitle(),$b);
+		$this->assertEquals($b, $a[0]->getPubTitle());
 	}
 }
 
