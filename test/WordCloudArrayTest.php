@@ -1,5 +1,7 @@
 <?php
 	
+include("../src/autoload_manager.php");
+
 // helper function
 // test if two arrays have the same elements, order does not matter
 function arrays_are_similar($a, $b) {
@@ -94,15 +96,6 @@ class wordCloudArrayTest extends PHPUnit_Framework_TestCase{
 		$fontsize = $a->wordSize(3,6);
 		$this->assertEquals( "42.5px", $fontsize );
 	}
-	//test generate word cloud function
-	public function testGenerateWordCloud(){
-		$a = new wordCloudArray("hello hello professor halfond");
-		$b = $a->generatewordcloud($a->getMap());
-		$this->assertEquals( "<span style = \"font-size: 70px\">hello</span>"
-			."<span style = \"font-size: 42.5px\">professor</span>"
-			."<span style = \"font-size: 42.5px\">halfond</span>", $b);
-	}
-	
 }
 
 ?>
