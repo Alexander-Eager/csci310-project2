@@ -12,7 +12,25 @@
     	table, th, td {
     		border: 1px solid black;
     	}
-    </style>
+	
+		body{
+			color: #FFCC00;
+		}
+
+		.table{
+			background-color: gray;
+			border: 1px solid #FAFAF2;
+			font-size: 1em;
+			margin: 2em;
+		}
+
+		.backbutton {
+			width: 40px;
+			height: 15px;
+			background-color: black;
+			color: white;
+		}
+	</style>
 
     <link href="ut2style.css" rel="stylesheet" type="text/css" />
 
@@ -41,20 +59,9 @@
 			echo $table;
 
 		?>
-	</div>
-	<style>
-	
-		body{
-			color: #FFCC00;
-		}
 
-		.table{
-			background-color: gray;
-			border: 1px solid #FAFAF2;
-			font-size: 1em;
-			margin: 2em;
-		}
-	</style>
+		<a href=""><div id="backb" class="backbutton">Back</div></a>
+	</div>
 
 </body>
 
