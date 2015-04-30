@@ -27,30 +27,44 @@ class ArticleTable {
 	// 
 	public static function createRowForArticle($article, $numTimes) {
 		$ans = "<tr>";
-		// goes title, authors, pub year, pub title, arnumber
-		$ans .= "<td>" . $article->getTitle() . "</td>";
-		// authors are in an array
+		// goes title, authors, pub year, pub title, frequency, arnumber
+		// replace the title with one that has links in it to more word clouds
+		$titleWithLinks = $article->getTitle();
+		$titleWithLinks = preg_replace("/\b(\w+)\b/",
+			"<a href='/wordCloud.php?searchTerms=$1&"
+			. "numResults=10'>$1</a>", $titleWithLinks);
+
+		$ans .= "<td>" . $titleWithLinks . "</td>";
+
+		// authors are in an array, and we need to add links
+		$authors = "";
 		if(count($article->getAuthors()) > 1) {
-			$ans .= "<td>" . implode("; ", $article->getAuthors());
-			$ans .="</td>";
+			$authors = implode("; ", $article->getAuthors());
 		}
 		else if (count($article->getAuthors()) == 1) {
 			$array = $article->getAuthors();
-			$ans .= "<td>" . $array[0];
-			$ans .="</td>";
+			$authors = $array[0];
 		}
 		else if(count($article->getAuthors()) == 0) {
-			$ans .= "<td>" . "";
-			$ans .="</td>";
+			$authors = "";
 		}
+		// now add links
+		$authors = preg_replace("/\b(\w+)\b/",
+			"<a href='/wordCloud.php?searchTerms=$1&"
+			. "numResults=10'>$1</a>", $authors);
+
+		$ans .= "<td>" . $authors . "</td>";
+
 		// these are direct
 		$ans .= "<td>" . $article->getPublishYear() . "</td>";
 		// add link to conference table
-		$ans .= "<td>" . "<a href=\"articlesWithConference.php?conference="
-				.$article->getPubTitle() . ">" 
-				.$article->getPubTitle() . "</a>" . "</td>";
+		$ans .= "<td>" . "<a href='articlesWithConference.php?conference="
+				.$article->getPubNumber() . "'>" 
+				.$article->getPubTitle() . "</a></td>";
 		$ans .= "<td>" . $numTimes . "</td>";
-		$ans .= "<td>" . $article->getArticleNumber() . "</td>";
+		// add link to article
+		$ans .= "<td>" . "<a href='" . $article->getPdfLink()
+			. "'>" . $article->getArticleNumber() . "</a></td>";
 		$ans .= "</tr>";
 		return $ans;
 	}

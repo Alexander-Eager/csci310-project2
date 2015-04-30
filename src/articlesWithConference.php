@@ -2,7 +2,7 @@
 <head>
 
     <title>
-        Scholar Search -- Tables for <?php $_GET["conference"]; ?>
+        Scholar Search -- Table by Publication
     </title>
 
     <style>
@@ -19,7 +19,9 @@
 </head>
 
 <body>
-	<h1 style = "text-align:center; color: black"> Table for <span style="text-decoration:underline;"><?php  echo $_GET["conference"]; ?></span> </h1>
+	<h1 style = "text-align:center; color: black">
+		Table by Publication
+	</h1>
 	<div class = "table">
 		<?php
 
@@ -28,8 +30,8 @@
 			$conference = $_GET["conference"];
 			
 			// retrieve all articles for query, and remove any that don't have $word
-			$articles = IeeeSearch::searchConference($conference, $numResults);
-			$table = ConferenceTable::generateConferenceTable(null, $articles);
+			$articles = IeeeSearch::searchConference($conference);
+			$table = ConferenceTable::generateConferenceTable($articles);
 
 			echo $table;
 
