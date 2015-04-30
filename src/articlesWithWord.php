@@ -16,16 +16,18 @@
     		border: 1px solid black;
     	}
 	
-		body{
+		body {
 			color: #FFCC00;
 		}
 
-		.table{
+		.table {
 			background-color: gray;
 			border: 1px solid #FAFAF2;
 			font-size: 1em;
 			margin: 2em;
 		}
+
+		/* change table later so that only the td/tr shows background color, include padding */
 
 	</style>
 
@@ -70,8 +72,8 @@
 
 		?>
 
-		<input action="action" type="button" value="Back" onclick="history.go(-1);" />
 	</div>
+	<input action="action" type="button" value="Back" onclick="history.go(-1);" />
 
 </body>
 
