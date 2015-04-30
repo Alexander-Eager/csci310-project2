@@ -24,12 +24,6 @@
 			margin: 2em;
 		}
 
-		.backbutton {
-			width: 40px;
-			height: 15px;
-			background-color: black;
-			color: white;
-		}
 	</style>
 
     <link href="ut2style.css" rel="stylesheet" type="text/css" />
@@ -60,7 +54,7 @@
 
 		?>
 
-		<a href=""><div id="backb" class="backbutton">Back</div></a>
+		<input action="action" type="button" value="Back" onclick="history.go(-1);" />
 	</div>
 
 </body>
