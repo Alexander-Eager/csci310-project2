@@ -128,9 +128,7 @@ class WordCloudArray {
 		}
 		$output = "";
 		foreach ($cuttedResult as $word => $numTimes) {
-
 			$size = $this->wordSize($numTimes, $max);
-
 			$output .= "<a href=\"/articlesWithWord.php?word=" 
 				. $word. "&searchTerms=" . $_GET["searchTerms"]
 				. "&numResults=" . $_GET["numResults"] 

@@ -1,0 +1,21 @@
+Meeting 4/29
+
+May Wu
+I have been helping Eric T out with the Articles.php UI.
+I have had technical difficulties regarding my laptop failing to work at full speed. Might need to rent laptops to use instead.
+I will also work on Eric T’s branch to fix errors in the code.
+
+Alex Eager
+I have been working on adding word frequency to the table of articles.
+I have to change a lot of test cases to reflect the added functionality, which just takes time. There is also the matter of making a table for a given conference, which I have to hash out with Eric Tang, who is working on that.
+I should be completely finished with the word frequency functionality and helping out Eric Tang with conference functionality by the next meeting.
+
+Ryan Zhou
+I have been working the documentation for the extreme programming practices document
+I had some trouble with determining the best way to prove our extreme programming practices
+I will have all of the documentation that I am able to do with the group members present done so tomorrow it can be finalized.
+
+Eric Tang
+I have been working on UI of article table and adding test cases for WordCloudArray.php
+Phpunit test misinterprets  $_GET[] so that the working code can not pass test cases.
+I will be working on conference table.
